@@ -10,8 +10,13 @@
 
 <p align="center"><em>The example above was created with Slate. Check it out at <a href="https://lord.github.io/slate">lord.github.io/slate</a>.</em></p>
 
+Fork
+----
+
+This project is a fork of [sdelements/node-slate](https://github.com/sdelements/node-slate) for the purpose of merging pull requests and keeping dependencies current.
+
 Features
-------------
+--------
 
 * **Clean, intuitive design** — With Slate, the description of your API is on the left side of your documentation, and all the code examples are on the right side. Inspired by [Stripe's](https://stripe.com/docs/api) and [Paypal's](https://developer.paypal.com/webapps/developer/docs/api/) API docs. Slate is responsive, so it looks great on tablets, phones, and even in print.
 
