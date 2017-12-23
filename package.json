@@ -6,7 +6,8 @@
    "scripts": {
       "test": "jshint gulpfile.js",
       "start": "gulp serve",
-      "build": "gulp",
+      "prebuild": "gulp clean",
+      "build": "gulp build-static-site",
       "deploy": "./deploy.sh"
    },
    "repository": {

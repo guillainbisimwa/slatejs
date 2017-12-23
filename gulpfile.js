@@ -121,7 +121,7 @@ gulp.task('NO_COMPRESS', function() {
    COMPRESS = false;
    });
 
-gulp.task('default', ['clean', 'fonts', 'images', 'highlightjs', 'js', 'sass', 'html']);
+gulp.task('build-static-site', ['fonts', 'images', 'highlightjs', 'js', 'sass', 'html']);
 gulp.task('serve', ['NO_COMPRESS', 'default'], function() {
    gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
    gulp.watch('./source/javascripts/**/*', ['js']);
