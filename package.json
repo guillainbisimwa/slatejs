@@ -1,8 +1,29 @@
 {
    "name": "node-slate",
-   "version": "1.4.2",
+   "version": "1.4.3",
    "description": "Node port of tripit/slate",
-   "main": "index.js",
+   "license": "Apache-2.0",
+   "main": "build/index.html",
+   "repository": "dpilafian/node-slate.git",
+   "homepage": "https://github.com/dpilafian/node-slate",
+   "bugs": "https://github.com/dpilafian/node-slate/issues",
+   "docs": "https://github.com/dpilafian/node-slate#readme",
+   "keywords": [
+      "slate",
+      "nodejs",
+      "api",
+      "api-documentation",
+      "static-site-generator"
+   ],
+   "author": "Various",
+   "license": "Apache-2.0",
+   "jshintConfig": {
+      "esversion": 6,
+      "strict": "implied",
+      "node": true,
+      "undef": true,
+      "unused": true
+   },
    "scripts": {
       "test": "jshint gulpfile.js",
       "start": "gulp serve",
@@ -10,23 +31,6 @@
       "build": "gulp build-static-site",
       "postbuild": "gulp lint",
       "deploy": "./deploy.sh"
-   },
-   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/dpilafian/node-slate.git"
-   },
-   "author": "SD Elements",
-   "license": "Apache-2.0",
-   "bugs": {
-      "url": "https://github.com/dpilafian/node-slate/issues"
-   },
-   "homepage": "https://github.com/dpilafian/node-slate#readme",
-   "jshintConfig": {
-      "esversion": 6,
-      "strict": "implied",
-      "node": true,
-      "undef": true,
-      "unused": true
    },
    "devDependencies": {
       "del": "^3.0.0",
