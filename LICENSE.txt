@@ -1,3 +1,7 @@
+Copyright 2017 individual contributors to this fork of node-slate
+Copyright 2015 SD Elements, Inc.
+Copyright 2008-2013 Concur Technologies, Inc.
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
