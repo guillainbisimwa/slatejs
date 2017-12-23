@@ -8,6 +8,7 @@
       "start": "gulp serve",
       "prebuild": "gulp clean",
       "build": "gulp build-static-site",
+      "prebuild": "gulp lint",
       "deploy": "./deploy.sh"
    },
    "repository": {
@@ -35,6 +36,7 @@
       "gulp-concat": "^2.6.0",
       "gulp-ejs": "^3.0.1",
       "gulp-if": "^2.0.0",
+      "gulp-jshint": "^2.0.4",
       "gulp-live-server": "^0.0.31",
       "gulp-open": "^2.0.0",
       "gulp-prettify": "^0.5.0",

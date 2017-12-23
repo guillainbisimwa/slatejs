@@ -5,6 +5,7 @@ const concat =    require('gulp-concat');
 const ejs =       require('gulp-ejs');
 const gls =       require('gulp-live-server');
 const gulpif =    require('gulp-if');
+const jsHint =    require('gulp-jshint');
 const open =      require('gulp-open');
 const prettify =  require('gulp-prettify');
 const rename =    require('gulp-rename');
@@ -16,6 +17,13 @@ const highlight = require('highlight.js');
 const marked =    require('marked');
 const yaml =      require('js-yaml');
 
+// const htmlHintConfig = { 'attr-value-double-quotes': false };
+const jsHintConfig = {
+    jquery:  true,
+    browser: true,
+    undef:   true,
+    unused:  true
+    };
 const renderer = new marked.Renderer();
 let COMPRESS = true;
 
@@ -77,6 +85,13 @@ gulp.task('clean', function() {
    return del(['build/*']);
    });
 
+function runJsHint() {
+    return gulp.src(jsFiles.scripts)
+        .pipe(jsHint(jsHintConfig))
+        .pipe(jsHint.reporter());
+    }
+gulp.task('lint', runJsHint);
+
 gulp.task('fonts', function() {
    return gulp.src('./source/fonts/**/*')
       .pipe(gulp.dest('build/fonts'));
@@ -125,7 +140,7 @@ gulp.task('NO_COMPRESS', function() {
    });
 
 gulp.task('build-static-site', ['fonts', 'images', 'highlightjs', 'js', 'sass', 'html']);
-gulp.task('serve', ['NO_COMPRESS', 'default'], function() {
+gulp.task('serve', ['NO_COMPRESS', 'build-static-site'], function() {
    gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
    gulp.watch('./source/javascripts/**/*', ['js']);
    gulp.watch('./source/stylesheets/**/*', ['sass']);
