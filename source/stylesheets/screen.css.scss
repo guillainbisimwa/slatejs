@@ -77,7 +77,9 @@ html, body {
       }
    &>img {  //logo at the top of the ToC
       display: block;
-      max-width: 100%;
+      max-width: 80%;
+      max-height: 100px;
+      margin: $logo-margin auto 0px auto;
       }
    &>.search {
       position: relative;
