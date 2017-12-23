@@ -67,7 +67,7 @@ under the License.
          }
          return ret;
          }, {});
-      };
+      }
 
    function stringifyURL(obj) {
       return obj ? Object.keys(obj).sort().map(function(key) {
@@ -79,12 +79,12 @@ under the License.
             }
          return encodeURIComponent(key) + '=' + encodeURIComponent(val);
          }).join('&') : '';
-      };
+      }
 
    // gets the language set in the query string
    function getLanguageFromQueryString() {
       if (location.search.length >= 1) {
-         var language = parseURL(location.search).language
+         var language = parseURL(location.search).language;
          if (language) {
             return language;
             } else if (jQuery.inArray(location.search.substr(1), languages) != -1) {

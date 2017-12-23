@@ -22,7 +22,8 @@ const jsHintConfig = {
     jquery:  true,
     browser: true,
     undef:   true,
-    unused:  true
+    unused:  true,
+    globals: { setupLanguages: false, toc: false }
     };
 const renderer = new marked.Renderer();
 let COMPRESS = true;
@@ -49,7 +50,7 @@ const jsFiles = {
 renderer.code = function(code, language) {
    const highlighted = language ? highlight.highlight(language, code).value :
       highlight.highlightAuto(code).value;
-   return '<pre class=highlight ' + language + '><code>' + highlighted + '</code></pre>';
+   return '<pre class="highlight ' + language + '"><code>' + highlighted + '</code></pre>';
    };
 
 const readIndexYml = function() {
