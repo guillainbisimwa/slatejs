@@ -112,9 +112,9 @@ gulp.task('highlightjs', function () {
 gulp.task('html', function () {
    const data = getPageData();
    return gulp.src('./source/*.html')
-   	.pipe(ejs(data).on('error', gutil.log))
-      .pipe(gulpif(COMPRESS, prettify({indent_size: 2})))
-   	.pipe(gulp.dest('./build'));
+      .pipe(ejs(data).on('error', gutil.log))
+      .pipe(gulpif(COMPRESS, prettify({ indent_size: 3 })))
+      .pipe(gulp.dest('./build'));
    });
 
 gulp.task('NO_COMPRESS', function() {
