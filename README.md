@@ -10,6 +10,10 @@
 
 <p align="center"><em>The example above was created with Slate. Check it out at <a href="https://lord.github.io/slate">lord.github.io/slate</a>.</em></p>
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/dpilafian/node-slate/blob/master/LICENSE.txt)
+[![npm](https://img.shields.io/npm/v/node-slate.svg)](https://www.npmjs.com/package/node-slate)
+[![Build Status](https://travis-ci.org/dpilafian/node-slate.svg)](https://travis-ci.org/dpilafian/node-slate)
+
 Fork
 ----
 
