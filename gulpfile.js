@@ -17,6 +17,7 @@ const highlight = require('highlight.js');
 const marked =    require('marked');
 const yaml =      require('js-yaml');
 
+const pkg = require('./package.json');
 // const htmlHintConfig = { 'attr-value-double-quotes': false };
 const jsHintConfig = {
     jquery:  true,
@@ -84,6 +85,7 @@ const getPageData = function() {
    };
 
 gulp.task('clean', function() {
+   console.log(pkg.name, 'v' + pkg.version);
    return del(['build/*']);
    });
 
