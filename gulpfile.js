@@ -19,6 +19,25 @@ const yaml =      require('js-yaml');
 const renderer = new marked.Renderer();
 let COMPRESS = true;
 
+const jsFiles = {
+   libs: [
+      './source/javascripts/lib/_energize.js',
+      './source/javascripts/lib/_jquery.js',
+      './source/javascripts/lib/_jquery_ui.js',
+      './source/javascripts/lib/_jquery.tocify.js',
+      './source/javascripts/lib/_imagesloaded.min.js',
+      ],
+   scripts: [
+      './source/javascripts/app/_lang.js',
+      './source/javascripts/app/_toc.js',
+      ],
+   search: [
+      './source/javascripts/lib/_lunr.js',
+      './source/javascripts/lib/_jquery.highlight.js',
+      './source/javascripts/app/_search.js'
+      ]
+   };
+
 renderer.code = function(code, language) {
    const highlighted = language ? highlight.highlight(language, code).value :
       highlight.highlightAuto(code).value;
@@ -70,23 +89,7 @@ gulp.task('images', function() {
 
 gulp.task('js', function() {
    const config = readIndexYml();
-   const libs = [
-      './source/javascripts/lib/_energize.js',
-      './source/javascripts/lib/_jquery.js',
-      './source/javascripts/lib/_jquery_ui.js',
-      './source/javascripts/lib/_jquery.tocify.js',
-      './source/javascripts/lib/_imagesloaded.min.js',
-      ];
-   const scripts = [
-      './source/javascripts/app/_lang.js',
-      './source/javascripts/app/_toc.js',
-      ];
-   if (config.search) {
-      libs.push('./source/javascripts/lib/_lunr.js');
-      libs.push('./source/javascripts/lib/_jquery.highlight.js');
-      libs.push('./source/javascripts/app/_search.js');
-      }
-   return gulp.src(libs.concat(scripts))
+   return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
       .pipe(concat('all.js'))
       .pipe(gulpif(COMPRESS, uglify()))
       .pipe(gulp.dest('./build/javascripts'));
