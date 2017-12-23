@@ -15,7 +15,7 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 */
-(function (global) {
+(function(global) {
   'use strict';
 
   var languages = [];
@@ -58,7 +58,7 @@ under the License.
       return {};
     }
 
-    return str.split('&').reduce(function (ret, param) {
+    return str.split('&').reduce(function(ret, param) {
       var parts = param.replace(/\+/g, ' ').split('=');
       var key = parts[0];
       var val = parts[1];
@@ -81,11 +81,11 @@ under the License.
   };
 
   function stringifyURL(obj) {
-    return obj ? Object.keys(obj).sort().map(function (key) {
+    return obj ? Object.keys(obj).sort().map(function(key) {
       var val = obj[key];
 
       if (Array.isArray(val)) {
-        return val.sort().map(function (val2) {
+        return val.sort().map(function(val2) {
           return encodeURIComponent(key) + '=' + encodeURIComponent(val2);
         }).join('&');
       }

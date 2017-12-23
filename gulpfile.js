@@ -19,7 +19,7 @@ const yaml =      require('js-yaml');
 const renderer = new marked.Renderer();
 let COMPRESS = true;
 
-renderer.code = function (code, language) {
+renderer.code = function(code, language) {
    const highlighted = language ? highlight.highlight(language, code).value :
       highlight.highlightAuto(code).value;
    return '<pre class="highlight ' + language + '"><code>' + highlighted + '</code></pre>';
@@ -54,7 +54,7 @@ const getPageData = function() {
       };
    };
 
-gulp.task('clean', function () {
+gulp.task('clean', function() {
    return del(['build/*']);
    });
 
@@ -92,7 +92,7 @@ gulp.task('js', function() {
       .pipe(gulp.dest('./build/javascripts'));
    });
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
    return gulp.src('./source/stylesheets/*.css.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(rename({ extname: ''}))
@@ -100,7 +100,7 @@ gulp.task('sass', function () {
       .pipe(gulp.dest('./build/stylesheets'));
    });
 
-gulp.task('highlightjs', function () {
+gulp.task('highlightjs', function() {
    const config = readIndexYml();
    const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
    return gulp.src(path)
@@ -109,7 +109,7 @@ gulp.task('highlightjs', function () {
       .pipe(gulp.dest('./build/stylesheets'));
    });
 
-gulp.task('html', function () {
+gulp.task('html', function() {
    const data = getPageData();
    return gulp.src('./source/*.html')
       .pipe(ejs(data).on('error', gutil.log))
@@ -129,7 +129,7 @@ gulp.task('serve', ['NO_COMPRESS', 'default'], function() {
    gulp.watch('./source/index.yml', ['highlightjs', 'js', 'html']);
    const server = gls.static('build', 4567);
    server.start();
-   gulp.watch(['build/**/*'], function (file) {
+   gulp.watch(['build/**/*'], function(file) {
       server.notify.apply(server, [file]);
       });
    gulp.src(__filename).pipe(open({ uri: 'http://localhost:4567' }));

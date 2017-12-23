@@ -1,7 +1,7 @@
 //= require ../lib/_lunr
 //= require ../lib/_jquery
 //= require ../lib/_jquery.highlight
-(function () {
+(function() {
   'use strict';
 
   var content, searchResults;
@@ -50,7 +50,7 @@
 
       if (results.length) {
         searchResults.empty();
-        $.each(results, function (index, result) {
+        $.each(results, function(index, result) {
           var elem = document.getElementById(result.ref);
           searchResults.append("<li><a href='#" + result.ref + "'>" + $(elem).text() + "</a></li>");
         });

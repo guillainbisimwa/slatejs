@@ -2,7 +2,7 @@
 //= require ../lib/_jquery_ui
 //= require ../lib/_jquery.tocify
 //= require ../lib/_imagesloaded.min
-(function (global) {
+(function(global) {
   'use strict';
 
   var closeToc = function() {
@@ -22,7 +22,7 @@
       highlightOffset: 60,
       scrollTo: -1,
       scrollHistory: true,
-      hashGenerator: function (text, element) {
+      hashGenerator: function(text, element) {
         return element.prop('id');
       }
     }).data('toc-tocify');
@@ -54,4 +54,3 @@
     });
   });
 })(window);
-
