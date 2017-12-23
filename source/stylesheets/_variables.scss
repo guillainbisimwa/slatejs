@@ -14,12 +14,10 @@ License for the specific language governing permissions and limitations
 under the License.
 */
 
-
 ////////////////////////////////////////////////////////////////////////////////
 // CUSTOMIZE SLATE
 ////////////////////////////////////////////////////////////////////////////////
 // Use these settings to help adjust the appearance of Slate
-
 
 // BACKGROUND COLORS
 ////////////////////
@@ -39,16 +37,14 @@ $aside-warning-bg: #c97a7e;
 $aside-success-bg: #6ac174;
 $search-notice-bg: #c97a7e;
 
-
 // TEXT COLORS
 ////////////////////
 $main-text: #333; // main content text color
-$nav-text: #fff;
-$nav-active-text: #fff;
-$lang-select-text: #fff; // color of unselected language tab text
-$lang-select-active-text: #fff; // color of selected language tab text
-$lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed
-
+$nav-text: white;
+$nav-active-text: white;
+$lang-select-text: white; // color of unselected language tab text
+$lang-select-active-text: white; // color of selected language tab text
+$lang-select-pressed-text: white; // color of language tab text when mouse is pressed
 
 // SIZES
 ////////////////////
@@ -64,25 +60,23 @@ $h1-margin-bottom: 21px; // padding under the largest header tags
 $tablet-width: 930px; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width; // min width before reverting to mobile size
 
-
 // FONTS
 ////////////////////
 %default-font {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
-  font-size: 13px;
-}
+   font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+   font-size: 13px;
+   }
 
 %header-font {
   @extend %default-font;
   font-weight: bold;
-}
+   }
 
 %code-font {
   font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
   font-size: 12px;
   line-height: 1.5;
-}
-
+   }
 
 // OTHER
 ////////////////////
@@ -90,16 +84,14 @@ $nav-active-shadow: #000;
 $nav-footer-border-color: #666;
 $nav-embossed-border-top: #000;
 $nav-embossed-border-bottom: #939393;
-$main-embossed-text-shadow: 0px 1px 0px #fff;
+$main-embossed-text-shadow: 0px 1px 0px white;
 $search-box-border-color: #666;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // INTERNAL
 ////////////////////////////////////////////////////////////////////////////////
 // These settings are probably best left alone.
-
 %break-words {
-    word-break: break-all;
-    hyphens: auto;
-}
+   word-break: break-all;
+   hyphens: auto;
+   }
