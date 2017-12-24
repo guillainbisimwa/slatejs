@@ -1,24 +1,27 @@
-const fs =        require('fs');
-const gulp =      require('gulp');
-const cleanCss =  require('gulp-clean-css');
-const concat =    require('gulp-concat');
-const ejs =       require('gulp-ejs');
-const gls =       require('gulp-live-server');
-const gulpif =    require('gulp-if');
-const jsHint =    require('gulp-jshint');
-const open =      require('gulp-open');
-const prettify =  require('gulp-prettify');
-const rename =    require('gulp-rename');
-const sass =      require('gulp-sass');
-const uglify =    require('gulp-uglify');
-const gutil =     require('gulp-util');
-const del =       require('del');
-const highlight = require('highlight.js');
-const marked =    require('marked');
-const yaml =      require('js-yaml');
+const cleanCss =    require('gulp-clean-css');
+const concat =      require('gulp-concat');
+const del =         require('del');
+const ejs =         require('gulp-ejs');
+const fs =          require('fs');
+const gls =         require('gulp-live-server');
+const gulp =        require('gulp');
+const gulpif =      require('gulp-if');
+const gutil =       require('gulp-util');
+const highlight =   require('highlight.js');
+const htmlHint =    require('gulp-htmlhint');
+const jsHint =      require('gulp-jshint');
+const marked =      require('marked');
+const mergeStream = require('merge-stream');
+const open =        require('gulp-open');
+const prettify =    require('gulp-prettify');
+const rename =      require('gulp-rename');
+const sass =        require('gulp-sass');
+const uglify =      require('gulp-uglify');
+const w3cJs =       require('gulp-w3cjs');
+const yaml =        require('js-yaml');
 
 const pkg = require('./package.json');
-// const htmlHintConfig = { 'attr-value-double-quotes': false };
+const htmlHintConfig = { 'attr-value-double-quotes': false };
 const jsHintConfig = {
     jquery:  true,
     browser: true,
@@ -89,12 +92,20 @@ gulp.task('clean', function() {
    return del(['build/*']);
    });
 
-function runJsHint() {
-    return gulp.src(jsFiles.scripts)
-        .pipe(jsHint(jsHintConfig))
-        .pipe(jsHint.reporter());
-    }
-gulp.task('lint', runJsHint);
+
+function runStaticAnalysis() {
+   return mergeStream(
+      gulp.src('build/index.html')
+         .pipe(w3cJs())
+         .pipe(w3cJs.reporter())
+         .pipe(htmlHint(htmlHintConfig))
+         .pipe(htmlHint.reporter()),
+      gulp.src(jsFiles.scripts)
+         .pipe(jsHint(jsHintConfig))
+         .pipe(jsHint.reporter())
+      );
+   }
+gulp.task('lint', runStaticAnalysis);
 
 gulp.task('fonts', function() {
    return gulp.src('./source/fonts/**/*')
