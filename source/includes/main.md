@@ -158,7 +158,7 @@ This endpoint retrieves a specific kitten.
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
-### HTTP Request
+### HTTP Request (with ID)
 
 `GET http://example.com/kittens/<ID>`
 
