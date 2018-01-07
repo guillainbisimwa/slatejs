@@ -21,6 +21,7 @@ const w3cJs =       require('gulp-w3cjs');
 const yaml =        require('js-yaml');
 
 const pkg = require('./package.json');
+const port = 4567;
 const htmlHintConfig = { 'attr-value-double-quotes': false };
 const jsHintConfig = {
     jquery:  true,
@@ -30,7 +31,7 @@ const jsHintConfig = {
     globals: { setupLanguages: false, toc: false }
     };
 const renderer = new marked.Renderer();
-let COMPRESS = true;
+let compress = true;
 
 const jsFiles = {
    libs: [
@@ -121,7 +122,7 @@ gulp.task('js', function() {
    const config = readIndexYml();
    return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
       .pipe(concat('all.js'))
-      .pipe(gulpif(COMPRESS, uglify()))
+      .pipe(gulpif(compress, uglify()))
       .pipe(gulp.dest('./build/javascripts'));
    });
 
@@ -129,7 +130,7 @@ gulp.task('sass', function() {
    return gulp.src('./source/stylesheets/*.css.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(rename({ extname: ''}))
-      .pipe(gulpif(COMPRESS, cleanCss()))
+      .pipe(gulpif(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
    });
 
@@ -138,7 +139,7 @@ gulp.task('highlightjs', function() {
    const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
    return gulp.src(path)
       .pipe(rename({ prefix: 'highlight-'}))
-      .pipe(gulpif(COMPRESS, cleanCss()))
+      .pipe(gulpif(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
    });
 
@@ -146,12 +147,12 @@ gulp.task('html', function() {
    const data = getPageData();
    return gulp.src('./source/*.html')
       .pipe(ejs(data).on('error', gutil.log))
-      .pipe(gulpif(COMPRESS, prettify({ indent_size: 3 })))
+      .pipe(gulpif(compress, prettify({ indent_size: 3 })))
       .pipe(gulp.dest('./build'));
    });
 
 gulp.task('NO_COMPRESS', function() {
-   COMPRESS = false;
+   compress = false;
    });
 
 gulp.task('build-static-site', ['fonts', 'images', 'highlightjs', 'js', 'sass', 'html']);
@@ -160,10 +161,10 @@ gulp.task('serve', ['NO_COMPRESS', 'build-static-site'], function() {
    gulp.watch('./source/javascripts/**/*', ['js']);
    gulp.watch('./source/stylesheets/**/*', ['sass']);
    gulp.watch('./source/index.yml', ['highlightjs', 'js', 'html']);
-   const server = gls.static('build', 4567);
+   const server = gls.static('build', port);
    server.start();
    gulp.watch(['build/**/*'], function(file) {
       server.notify.apply(server, [file]);
       });
-   gulp.src(__filename).pipe(open({ uri: 'http://localhost:4567' }));
+   gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
    });
