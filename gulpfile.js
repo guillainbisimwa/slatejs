@@ -5,7 +5,7 @@ const ejs =         require('gulp-ejs');
 const fs =          require('fs');
 const gls =         require('gulp-live-server');
 const gulp =        require('gulp');
-const gulpif =      require('gulp-if');
+const gulpIf =      require('gulp-if');
 const gutil =       require('gulp-util');
 const highlight =   require('highlight.js');
 const htmlHint =    require('gulp-htmlhint');
@@ -122,7 +122,7 @@ gulp.task('js', function() {
    const config = readIndexYml();
    return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
       .pipe(concat('all.js'))
-      .pipe(gulpif(compress, uglify()))
+      .pipe(gulpIf(compress, uglify()))
       .pipe(gulp.dest('./build/javascripts'));
    });
 
@@ -130,7 +130,7 @@ gulp.task('sass', function() {
    return gulp.src('./source/stylesheets/*.css.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(rename({ extname: ''}))
-      .pipe(gulpif(compress, cleanCss()))
+      .pipe(gulpIf(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
    });
 
@@ -139,7 +139,7 @@ gulp.task('highlightjs', function() {
    const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
    return gulp.src(path)
       .pipe(rename({ prefix: 'highlight-'}))
-      .pipe(gulpif(compress, cleanCss()))
+      .pipe(gulpIf(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
    });
 
@@ -147,7 +147,7 @@ gulp.task('html', function() {
    const data = getPageData();
    return gulp.src('./source/*.html')
       .pipe(ejs(data).on('error', gutil.log))
-      .pipe(gulpif(compress, prettify({ indent_size: 3 })))
+      .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
       .pipe(gulp.dest('./build'));
    });
 
