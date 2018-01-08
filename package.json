@@ -5,9 +5,9 @@
    "license": "Apache-2.0",
    "main": "build/index.html",
    "repository": "dpilafian/node-slate.git",
-   "homepage": "https://github.com/dpilafian/node-slate",
-   "bugs": "https://github.com/dpilafian/node-slate/issues",
-   "docs": "https://github.com/dpilafian/node-slate#readme",
+   "homepage": "https://github.com/center-key/node-slate",
+   "bugs": "https://github.com/center-key/node-slate/issues",
+   "docs": "https://github.com/center-key/node-slate#readme",
    "keywords": [
       "slate",
       "nodejs",
