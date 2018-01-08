@@ -6,7 +6,7 @@ const fs =          require('fs');
 const gls =         require('gulp-live-server');
 const gulp =        require('gulp');
 const gulpIf =      require('gulp-if');
-const gutil =       require('gulp-util');
+const log =         require('fancy-log');
 const highlight =   require('highlight.js');
 const htmlHint =    require('gulp-htmlhint');
 const jsHint =      require('gulp-jshint');
@@ -146,7 +146,7 @@ gulp.task('highlightjs', function() {
 gulp.task('html', function() {
    const data = getPageData();
    return gulp.src('./source/*.html')
-      .pipe(ejs(data).on('error', gutil.log))
+      .pipe(ejs(data).on('error', log.error))
       .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
       .pipe(gulp.dest('./build'));
    });
