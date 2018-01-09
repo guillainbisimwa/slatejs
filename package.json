@@ -31,7 +31,7 @@
       "postbuild": "gulp lint",
       "deploy": "./deploy.sh"
    },
-   "devDependencies": {
+   "dependencies": {
       "del": "~3.0",
       "gulp": "~3.9",
       "gulp-clean-css": "~3.9",
