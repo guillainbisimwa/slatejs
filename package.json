@@ -1,10 +1,10 @@
 {
    "name": "node-slate",
-   "version": "1.5.1",
+   "version": "1.5.2",
    "description": "Node port of tripit/slate",
    "license": "Apache-2.0",
    "main": "build/index.html",
-   "repository": "dpilafian/node-slate.git",
+   "repository": "center-key/node-slate.git",
    "homepage": "https://github.com/center-key/node-slate",
    "bugs": "https://github.com/center-key/node-slate/issues",
    "docs": "https://github.com/center-key/node-slate#readme",
