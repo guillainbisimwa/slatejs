@@ -93,11 +93,11 @@ gulp.task('clean', function() {
    return del(['build/*']);
    });
 
-
 function runStaticAnalysis() {
+   function ignoreDuplicateIds(type, message) { return !/^Duplicate ID/.test(message); }
    return mergeStream(
       gulp.src('build/index.html')
-         .pipe(w3cJs())
+         .pipe(w3cJs({ verifyMessage: ignoreDuplicateIds }))
          .pipe(w3cJs.reporter())
          .pipe(htmlHint(htmlHintConfig))
          .pipe(htmlHint.reporter()),
