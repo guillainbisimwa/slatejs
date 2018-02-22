@@ -26,7 +26,7 @@
 Fork
 ----
 
-This project is a fork of [sdelements/node-slate](https://github.com/sdelements/node-slate) for the purpose of merging pull requests and keeping dependencies current.
+This project is a fork of [sdelements/node-slate](https://github.com/sdelements/node-slate) for the purpose of merging pull requests and keeping dependencies current (this fork is used by [gulp-node-slate](https://www.npmjs.com/package/gulp-node-slate)).
 
 Features
 --------
