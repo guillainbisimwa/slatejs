@@ -176,5 +176,5 @@ gulp.task('sass',              buildCss);
 gulp.task('highlight',         addHighlightStyle);
 gulp.task('html',              buildHtml);
 gulp.task('NO_COMPRESS',       disableCompress);
-gulp.task('build-static-site', ['fonts', 'images', 'highlight', 'js', 'sass', 'html']);
-gulp.task('serve',             ['NO_COMPRESS', 'build-static-site'], runServer);
+gulp.task('build-static-site', gulp.series(['fonts', 'images', 'highlight', 'js', 'sass', 'html']));
+gulp.task('serve',             gulp.series(['NO_COMPRESS', 'build-static-site']), runServer);

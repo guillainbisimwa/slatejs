@@ -33,7 +33,7 @@
    },
    "dependencies": {
       "del": "~3.0",
-      "gulp": "~3.9",
+      "gulp": "~4.0",
       "gulp-clean-css": "~3.9",
       "gulp-cli": "~2.0",
       "gulp-concat": "~2.6",
