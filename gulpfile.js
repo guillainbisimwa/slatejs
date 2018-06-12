@@ -88,10 +88,10 @@ const getPageData = function() {
       };
    };
 
-gulp.task('clean', function() {
+function clean() {
    console.log(pkg.name, 'v' + pkg.version);
    return del(['build/*']);
-   });
+   }
 
 function runStaticAnalysis() {
    function ignoreDuplicateIds(type, message) { return !/^Duplicate ID/.test(message); }
@@ -106,57 +106,55 @@ function runStaticAnalysis() {
          .pipe(jsHint.reporter())
       );
    }
-gulp.task('lint', runStaticAnalysis);
 
-gulp.task('fonts', function() {
+function buildFonts() {
    return gulp.src('./source/fonts/**/*')
       .pipe(gulp.dest('build/fonts'));
-   });
+   }
 
-gulp.task('images', function() {
+function buildImages() {
    return gulp.src('./source/images/**/*')
       .pipe(gulp.dest('build/images'));
-   });
+   }
 
-gulp.task('js', function() {
+function buildJs() {
    const config = readIndexYml();
    return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
       .pipe(concat('all.js'))
       .pipe(gulpIf(compress, uglify()))
       .pipe(gulp.dest('./build/javascripts'));
-   });
+   }
 
-gulp.task('sass', function() {
+function buildCss() {
    return gulp.src('./source/stylesheets/*.css.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(rename({ extname: ''}))
       .pipe(gulpIf(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
-   });
+   }
 
-gulp.task('highlightjs', function() {
+function addHighlightStyle() {
    const config = readIndexYml();
    const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
    return gulp.src(path)
       .pipe(rename({ prefix: 'highlight-'}))
       .pipe(gulpIf(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
-   });
+   }
 
-gulp.task('html', function() {
+function buildHtml() {
    const data = getPageData();
    return gulp.src('./source/*.html')
       .pipe(ejs(data).on('error', log.error))
       .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
       .pipe(gulp.dest('./build'));
-   });
+   }
 
-gulp.task('NO_COMPRESS', function() {
+function disableCompress() {
    compress = false;
-   });
+   }
 
-gulp.task('build-static-site', ['fonts', 'images', 'highlightjs', 'js', 'sass', 'html']);
-gulp.task('serve', ['NO_COMPRESS', 'build-static-site'], function() {
+function runServer() {
    gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
    gulp.watch('./source/javascripts/**/*', ['js']);
    gulp.watch('./source/stylesheets/**/*', ['sass']);
@@ -167,4 +165,16 @@ gulp.task('serve', ['NO_COMPRESS', 'build-static-site'], function() {
       server.notify.apply(server, [file]);
       });
    gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
-   });
+   }
+
+gulp.task('clean',             clean);
+gulp.task('lint',              runStaticAnalysis);
+gulp.task('fonts',             buildFonts);
+gulp.task('images',            buildImages);
+gulp.task('js',                buildJs);
+gulp.task('sass',              buildCss);
+gulp.task('highlight',         addHighlightStyle);
+gulp.task('html',              buildHtml);
+gulp.task('NO_COMPRESS',       disableCompress);
+gulp.task('build-static-site', ['fonts', 'images', 'highlight', 'js', 'sass', 'html']);
+gulp.task('serve',             ['NO_COMPRESS', 'build-static-site'], runServer);
