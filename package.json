@@ -1,6 +1,6 @@
 {
    "name": "node-slate",
-   "version": "1.6.2",
+   "version": "1.7.0",
    "description": "Node port of tripit/slate",
    "license": "Apache-2.0",
    "main": "build/index.html",
