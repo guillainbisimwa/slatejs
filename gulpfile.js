@@ -58,11 +58,11 @@ renderer.code = function(code, language) {
    return '<pre class="highlight ' + language + '"><code>' + highlighted + '</code></pre>';
    };
 
-const readIndexYml = function() {
+function readIndexYml() {
    return yaml.safeLoad(fs.readFileSync('./source/index.yml', 'utf8'));
-   };
+   }
 
-const getPageData = function() {
+function getPageData() {
    const config = readIndexYml();
    const includes = config.includes
       .map(function(include) { return './source/includes/' + include + '.md'; })
@@ -86,7 +86,7 @@ const getPageData = function() {
          return typeof lang == 'string' ? lang : lang.keys.first;
          })
       };
-   };
+   }
 
 function clean() {
    console.log(pkg.name, 'v' + pkg.version);
@@ -128,7 +128,7 @@ function buildJs() {
 function buildCss() {
    return gulp.src('./source/stylesheets/*.css.scss')
       .pipe(sass().on('error', sass.logError))
-      .pipe(rename({ extname: ''}))
+      .pipe(rename({ extname: '' }))
       .pipe(gulpIf(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
    }
@@ -137,7 +137,7 @@ function addHighlightStyle() {
    const config = readIndexYml();
    const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
    return gulp.src(path)
-      .pipe(rename({ prefix: 'highlight-'}))
+      .pipe(rename({ prefix: 'highlight-' }))
       .pipe(gulpIf(compress, cleanCss()))
       .pipe(gulp.dest('./build/stylesheets'));
    }
@@ -148,6 +148,16 @@ function buildHtml() {
       .pipe(ejs(data).on('error', log.error))
       .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
       .pipe(gulp.dest('./build'));
+   }
+function build() {
+   return mergeStream(
+      buildFonts(),
+      buildImages(),
+      buildJs(),
+      buildCss(),
+      addHighlightStyle(),
+      buildHtml()
+      );
    }
 
 function disableCompress() {
@@ -161,20 +171,13 @@ function runServer() {
    gulp.watch('./source/index.yml', ['highlightjs', 'js', 'html']);
    const server = gls.static('build', port);
    server.start();
-   gulp.watch(['build/**/*'], function(file) {
-      server.notify.apply(server, [file]);
-      });
+   function notifyServer(file) { server.notify.apply(server, [file]); }
+   gulp.watch('build/**/*', notifyServer);
    gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
    }
 
 gulp.task('clean',             clean);
 gulp.task('lint',              runStaticAnalysis);
-gulp.task('fonts',             buildFonts);
-gulp.task('images',            buildImages);
-gulp.task('js',                buildJs);
-gulp.task('sass',              buildCss);
-gulp.task('highlight',         addHighlightStyle);
-gulp.task('html',              buildHtml);
-gulp.task('NO_COMPRESS',       disableCompress);
-gulp.task('build-static-site', gulp.series(['fonts', 'images', 'highlight', 'js', 'sass', 'html']));
-gulp.task('serve',             gulp.series(['NO_COMPRESS', 'build-static-site']), runServer);
+gulp.task('build-static-site', build);
+gulp.task('disable-compress',  disableCompress);
+gulp.task('serve',             gulp.series(['disable-compress', 'build-static-site']), runServer);
