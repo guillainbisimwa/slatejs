@@ -88,77 +88,72 @@ function getPageData() {
       };
    }
 
-function clean() {
-   console.log(pkg.name, 'v' + pkg.version);
-   return del(['build/*']);
-   }
-
-function runStaticAnalysis() {
-   function ignoreDuplicateIds(type, message) { return !/^Duplicate ID/.test(message); }
-   return mergeStream(
-      gulp.src('build/index.html')
-         .pipe(w3cJs({ verifyMessage: ignoreDuplicateIds }))
-         .pipe(w3cJs.reporter())
-         .pipe(htmlHint(htmlHintConfig))
-         .pipe(htmlHint.reporter()),
-      gulp.src(jsFiles.scripts)
-         .pipe(jsHint(jsHintConfig))
-         .pipe(jsHint.reporter())
-      );
-   }
-
-function buildFonts() {
-   return gulp.src('./source/fonts/**/*')
-      .pipe(gulp.dest('build/fonts'));
-   }
-
-function buildImages() {
-   return gulp.src('./source/images/**/*')
-      .pipe(gulp.dest('build/images'));
-   }
-
-function buildJs() {
-   const config = readIndexYml();
-   return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
-      .pipe(concat('all.js'))
-      .pipe(gulpIf(compress, uglify()))
-      .pipe(gulp.dest('./build/javascripts'));
-   }
-
-function buildCss() {
-   return gulp.src('./source/stylesheets/*.css.scss')
-      .pipe(sass().on('error', sass.logError))
-      .pipe(rename({ extname: '' }))
-      .pipe(gulpIf(compress, cleanCss()))
-      .pipe(gulp.dest('./build/stylesheets'));
-   }
-
-function addHighlightStyle() {
-   const config = readIndexYml();
-   const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
-   return gulp.src(path)
-      .pipe(rename({ prefix: 'highlight-' }))
-      .pipe(gulpIf(compress, cleanCss()))
-      .pipe(gulp.dest('./build/stylesheets'));
-   }
-
-function buildHtml() {
-   const data = getPageData();
-   return gulp.src('./source/*.html')
-      .pipe(ejs(data).on('error', log.error))
-      .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
-      .pipe(gulp.dest('./build'));
-   }
-function build() {
-   return mergeStream(
-      buildFonts(),
-      buildImages(),
-      buildJs(),
-      buildCss(),
-      addHighlightStyle(),
-      buildHtml()
-      );
-   }
+const task = {
+   clean: function() {
+      console.log(pkg.name, 'v' + pkg.version);
+      return del(['build/*']);
+      },
+   runStaticAnalysis: function() {
+      function ignoreDuplicateIds(type, message) { return !/^Duplicate ID/.test(message); }
+      return mergeStream(
+         gulp.src('build/index.html')
+            .pipe(w3cJs({ verifyMessage: ignoreDuplicateIds }))
+            .pipe(w3cJs.reporter())
+            .pipe(htmlHint(htmlHintConfig))
+            .pipe(htmlHint.reporter()),
+         gulp.src(jsFiles.scripts)
+            .pipe(jsHint(jsHintConfig))
+            .pipe(jsHint.reporter())
+         );
+      },
+   buildFonts: function() {
+      return gulp.src('./source/fonts/**/*')
+         .pipe(gulp.dest('build/fonts'));
+      },
+   buildImages: function() {
+      return gulp.src('./source/images/**/*')
+         .pipe(gulp.dest('build/images'));
+      },
+   buildJs: function() {
+      const config = readIndexYml();
+      return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
+         .pipe(concat('all.js'))
+         .pipe(gulpIf(compress, uglify()))
+         .pipe(gulp.dest('./build/javascripts'));
+      },
+   buildCss: function() {
+      return gulp.src('./source/stylesheets/*.css.scss')
+         .pipe(sass().on('error', sass.logError))
+         .pipe(rename({ extname: '' }))
+         .pipe(gulpIf(compress, cleanCss()))
+         .pipe(gulp.dest('./build/stylesheets'));
+      },
+   addHighlightStyle: function() {
+      const config = readIndexYml();
+      const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
+      return gulp.src(path)
+         .pipe(rename({ prefix: 'highlight-' }))
+         .pipe(gulpIf(compress, cleanCss()))
+         .pipe(gulp.dest('./build/stylesheets'));
+      },
+   buildHtml: function() {
+      const data = getPageData();
+      return gulp.src('./source/*.html')
+         .pipe(ejs(data).on('error', log.error))
+         .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
+         .pipe(gulp.dest('./build'));
+      },
+   build() {
+      return mergeStream(
+         task.buildFonts(),
+         task.buildImages(),
+         task.buildJs(),
+         task.buildCss(),
+         task.addHighlightStyle(),
+         task.buildHtml()
+         );
+      }
+   };
 
 function disableCompress() {
    compress = false;
@@ -176,8 +171,8 @@ function runServer() {
    gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
    }
 
-gulp.task('clean',             clean);
-gulp.task('lint',              runStaticAnalysis);
-gulp.task('build-static-site', build);
+gulp.task('clean',             task.clean);
+gulp.task('lint',              task.runStaticAnalysis);
+gulp.task('build-static-site', task.build);
 gulp.task('disable-compress',  disableCompress);
 gulp.task('serve',             gulp.series(['disable-compress', 'build-static-site']), runServer);

@@ -9,7 +9,7 @@
 projectHome=$(cd $(dirname $0); pwd)
 webPage=build/index.html
 
-info() {
+setupTools() {
    # Check for Node.js installation and download project dependencies
    cd $projectHome
    pwd
@@ -43,6 +43,6 @@ openBrowser() {
 echo
 echo "node-slate"
 echo "=========="
-info
+setupTools
 runTasks
 openBrowser
