@@ -1,17 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 ##############
 # node-slate #
 ##############
 
 # To make this file runnable:
-#    $ chmod +x *.sh.command
+#     $ chmod +x *.sh.command
 
+banner="node-slate"
 projectHome=$(cd $(dirname $0); pwd)
 webPage=build/index.html
 
 setupTools() {
    # Check for Node.js installation and download project dependencies
    cd $projectHome
+   echo
+   echo $banner
+   echo $(echo $banner | sed -e "s/./=/g")
    pwd
    echo
    echo "Node.js:"
@@ -40,9 +44,6 @@ openBrowser() {
    open $webPage
    }
 
-echo
-echo "node-slate"
-echo "=========="
 setupTools
 runTasks
 openBrowser
