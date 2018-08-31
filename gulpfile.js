@@ -143,7 +143,7 @@ const task = {
          .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
          .pipe(gulp.dest('./build'));
       },
-   build() {
+   build: function() {
       return mergeStream(
          task.buildFonts(),
          task.buildImages(),
@@ -152,27 +152,26 @@ const task = {
          task.addHighlightStyle(),
          task.buildHtml()
          );
+      },
+   buildUncompressed: function() {
+      compress = false;
+      return task.build();
+      },
+   runServer: function() {
+      gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
+      gulp.watch('./source/javascripts/**/*', ['js']);
+      gulp.watch('./source/stylesheets/**/*', ['sass']);
+      gulp.watch('./source/index.yml', ['highlightjs', 'js', 'html']);
+      const server = gls.static('build', port);
+      server.start();
+      function notifyServer(file) { server.notify.apply(server, [file]); }
+      gulp.watch('build/**/*', notifyServer);
+      gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
       }
    };
 
-function disableCompress() {
-   compress = false;
-   }
-
-function runServer() {
-   gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
-   gulp.watch('./source/javascripts/**/*', ['js']);
-   gulp.watch('./source/stylesheets/**/*', ['sass']);
-   gulp.watch('./source/index.yml', ['highlightjs', 'js', 'html']);
-   const server = gls.static('build', port);
-   server.start();
-   function notifyServer(file) { server.notify.apply(server, [file]); }
-   gulp.watch('build/**/*', notifyServer);
-   gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
-   }
-
-gulp.task('clean',             task.clean);
-gulp.task('lint',              task.runStaticAnalysis);
-gulp.task('build-static-site', task.build);
-gulp.task('disable-compress',  disableCompress);
-gulp.task('serve',             gulp.series(['disable-compress', 'build-static-site']), runServer);
+gulp.task('clean',              task.clean);
+gulp.task('lint',               task.runStaticAnalysis);
+gulp.task('build-static-site',  task.build);
+gulp.task('build-uncompressed', task.buildUncompressed);
+gulp.task('serve',              task.runServer);
