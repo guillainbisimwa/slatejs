@@ -78,7 +78,7 @@ function getPageData() {
          return '<img alt=' + code + ' class=image-' + code + ' src=images/' + filename + '>';
          },
       javascript_include_tag: function(name) {
-         return '<script src=javascripts/' + name + '.js></script>';
+         return '<script src=javascripts/' + name + '.js type=text/javascript></script>';
          },
       stylesheet_link_tag: function(name, media) {
          return '<link href=stylesheets/' + name + '.css rel=stylesheet media="' + media + '">';
