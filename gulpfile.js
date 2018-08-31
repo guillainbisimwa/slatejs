@@ -58,7 +58,7 @@ const renderer = new marked.Renderer();
 renderer.code = function(code, language) {
    const highlighted = language ? highlight.highlight(language, code).value :
       highlight.highlightAuto(code).value;
-   return '<pre class="highlight ' + language + '"><code>' + highlighted + '</code></pre>';
+   return `<pre class="highlight ${language}"><code>${highlighted}</code></pre>`;
    };
 function readIndexYml() {
    return yaml.safeLoad(fs.readFileSync('./source/index.yml', 'utf8'));
@@ -66,7 +66,7 @@ function readIndexYml() {
 function getPageData() {
    const config = readIndexYml();
    const includes = config.includes
-      .map(function(include) { return './source/includes/' + include + '.md'; })
+      .map(function(include) { return `./source/includes/${include}.md`; })
       .map(function(include) { return fs.readFileSync(include, 'utf8'); })
       .map(function(include) { return marked(include, { renderer: renderer }); });
    return {
@@ -75,13 +75,13 @@ function getPageData() {
       includes: includes,
       image_tag: function(filename) {
          const code = filename.split('.')[0];
-         return '<img alt=' + code + ' class=image-' + code + ' src=images/' + filename + '>';
+         return `<img alt=${code} class=image-${code} src=images/${filename}>`;
          },
       javascript_include_tag: function(name) {
-         return '<script src=javascripts/' + name + '.js type=text/javascript></script>';
+         return `<script src=javascripts/${name}.js type=text/javascript></script>\n`;
          },
       stylesheet_link_tag: function(name, media) {
-         return '<link href=stylesheets/' + name + '.css rel=stylesheet media="' + media + '">';
+         return `<link href=stylesheets/${name}.css rel=stylesheet media=${media}>`;
          },
       langs: (config.language_tabs || []).map(function(lang) {
          return typeof lang == 'string' ? lang : lang.keys.first;
