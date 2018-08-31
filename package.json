@@ -4,7 +4,7 @@
     "description": "Node port of tripit/slate",
     "license": "Apache-2.0",
     "main": "build/index.html",
-    "repository": "github:center-key/node-slate.git",
+    "repository": "github:center-key/node-slate",
     "homepage": "https://github.com/center-key/node-slate",
     "bugs": "https://github.com/center-key/node-slate/issues",
     "docs": "https://github.com/center-key/node-slate#readme",
@@ -33,7 +33,7 @@
     },
     "dependencies": {
         "del": "~3.0",
-        "gulp": "^4.0",
+        "gulp": "~4.0",
         "gulp-clean-css": "~3.10",
         "gulp-cli": "~2.0",
         "gulp-concat": "~2.6",
@@ -50,9 +50,9 @@
         "gulp-w3cjs": "~1.3",
         "highlight.js": "~9.12",
         "js-yaml": "~3.12",
-        "jshint": "^2.9.6",
-        "marked": "^0.5.0",
+        "jshint": "~2.9.6",
+        "marked": "~0.5",
         "merge-stream": "~1.0",
-        "node-sass": "^4.9.3"
+        "node-sass": "~4.9.3"
     }
 }
