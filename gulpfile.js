@@ -158,10 +158,11 @@ const task = {
       return task.build();
       },
    runServer: function() {
-      gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
-      gulp.watch('./source/javascripts/**/*', ['js']);
-      gulp.watch('./source/stylesheets/**/*', ['sass']);
-      gulp.watch('./source/index.yml', ['highlightjs', 'js', 'html']);
+      gulp.watch('./source/*.html',           gulp.parallel('build-html'));
+      gulp.watch('./source/includes/**/*',    gulp.parallel('build-html'));
+      gulp.watch('./source/javascripts/**/*', gulp.parallel('build-js'));
+      gulp.watch('./source/stylesheets/**/*', gulp.parallel('build-css'));
+      gulp.watch('./source/index.yml',        gulp.parallel('build-highlightjs', 'build-js', 'build-html'));
       const server = gls.static('build', port);
       server.start();
       function notifyServer(file) { server.notify.apply(server, [file]); }
@@ -172,6 +173,10 @@ const task = {
 
 gulp.task('clean',              task.clean);
 gulp.task('lint',               task.runStaticAnalysis);
+gulp.task('build-js',           task.buildJs);
+gulp.task('build-css',          task.buildCss);
+gulp.task('build-html',         task.buildHtml);
+gulp.task('build-highlightjs',  task.addHighlightStyle);
 gulp.task('build-static-site',  task.build);
 gulp.task('build-uncompressed', task.buildUncompressed);
 gulp.task('serve',              task.runServer);
