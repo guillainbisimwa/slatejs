@@ -1,6 +1,8 @@
 //= require ../lib/_jquery
 
 /*
+Copyright 2017-2018 individual contributors to center-key/node-slate
+Copyright 2015 SD Elements, Inc.
 Copyright 2008-2013 Concur Technologies, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may
