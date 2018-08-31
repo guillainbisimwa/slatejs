@@ -37,7 +37,7 @@
         "gulp-clean-css": "~3.10",
         "gulp-cli": "~2.0",
         "gulp-concat": "~2.6",
-        "gulp-ejs": "~3.1",
+        "gulp-ejs": "~3.2",
         "gulp-htmlhint": "~2.1",
         "gulp-if": "~2.0",
         "gulp-jshint": "~2.1",
