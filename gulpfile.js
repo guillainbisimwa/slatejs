@@ -1,3 +1,6 @@
+// node-slate
+
+// Imports
 const cleanCss =    require('gulp-clean-css');
 const concat =      require('gulp-concat');
 const del =         require('del');
@@ -20,6 +23,7 @@ const uglify =      require('gulp-uglify');
 const w3cJs =       require('gulp-w3cjs');
 const yaml =        require('js-yaml');
 
+// Setup
 const pkg = require('./package.json');
 const port = 4567;
 const htmlHintConfig = { 'attr-value-double-quotes': false };
@@ -28,11 +32,8 @@ const jsHintConfig = {
     browser: true,
     undef:   true,
     unused:  true,
-    globals: { setupLanguages: false, toc: false }
     };
-const renderer = new marked.Renderer();
 let compress = true;
-
 const jsFiles = {
    libs: [
       './source/javascripts/lib/_energize.js',
@@ -48,20 +49,20 @@ const jsFiles = {
    search: [
       './source/javascripts/lib/_lunr.js',
       './source/javascripts/lib/_jquery.highlight.js',
-      './source/javascripts/app/_search.js'
+      './source/javascripts/app/_search.js',
       ]
    };
 
+// Helper functions
+const renderer = new marked.Renderer();
 renderer.code = function(code, language) {
    const highlighted = language ? highlight.highlight(language, code).value :
       highlight.highlightAuto(code).value;
    return '<pre class="highlight ' + language + '"><code>' + highlighted + '</code></pre>';
    };
-
 function readIndexYml() {
    return yaml.safeLoad(fs.readFileSync('./source/index.yml', 'utf8'));
    }
-
 function getPageData() {
    const config = readIndexYml();
    const includes = config.includes
@@ -88,6 +89,7 @@ function getPageData() {
       };
    }
 
+// Tasks
 const task = {
    clean: function() {
       console.log(pkg.name, 'v' + pkg.version);
@@ -171,6 +173,7 @@ const task = {
       }
    };
 
+// Gulp
 gulp.task('clean',              task.clean);
 gulp.task('lint',               task.runStaticAnalysis);
 gulp.task('build-js',           task.buildJs);
