@@ -1,27 +1,27 @@
 // node-slate
 
 // Imports
-const cleanCss =         require('gulp-clean-css');
-const concat =           require('gulp-concat');
-const del =              require('del');
-const ejs =              require('gulp-ejs');
-const fs =               require('fs');
-const gls =              require('gulp-live-server');
-const gulp =             require('gulp');
-const gulpIf =           require('gulp-if');
-const log =              require('fancy-log');
-const highlight =        require('highlight.js');
-const htmlHint =         require('gulp-htmlhint');
-const jsHint =           require('gulp-jshint');
-const marked =           require('marked');
-const mergeStream =      require('merge-stream');
-const open =             require('gulp-open');
-const prettify =         require('gulp-prettify');
-const rename =           require('gulp-rename');
-const sass =             require('gulp-sass');
-const uglify =           require('gulp-uglify');
-const w3cHtmlValidator = require('gulp-w3cjs');
-const yaml =             require('js-yaml');
+const cleanCss =      require('gulp-clean-css');
+const concat =        require('gulp-concat');
+const del =           require('del');
+const ejs =           require('gulp-ejs');
+const fs =            require('fs');
+const gls =           require('gulp-live-server');
+const gulp =          require('gulp');
+const gulpIf =        require('gulp-if');
+const log =           require('fancy-log');
+const highlight =     require('highlight.js');
+const htmlHint =      require('gulp-htmlhint');
+const htmlValidator = require('gulp-w3c-html-validator');
+const jsHint =        require('gulp-jshint');
+const marked =        require('marked');
+const mergeStream =   require('merge-stream');
+const open =          require('gulp-open');
+const prettify =      require('gulp-prettify');
+const rename =        require('gulp-rename');
+const sass =          require('gulp-sass');
+const uglify =        require('gulp-uglify');
+const yaml =          require('js-yaml');
 
 // Setup
 const pkg = require('./package.json');
@@ -99,10 +99,10 @@ const task = {
       function ignoreDuplicateIds(type, message) { return !/^Duplicate ID/.test(message); }
       return mergeStream(
          gulp.src('build/index.html')
-            .pipe(w3cHtmlValidator({ verifyMessage: ignoreDuplicateIds }))
-            .pipe(w3cHtmlValidator.reporter())
             .pipe(htmlHint(htmlHintConfig))
-            .pipe(htmlHint.reporter()),
+            .pipe(htmlHint.reporter())
+            .pipe(htmlValidator({ verifyMessage: ignoreDuplicateIds }))
+            .pipe(htmlValidator.reporter()),
          gulp.src(jsFiles.scripts)
             .pipe(jsHint(jsHintConfig))
             .pipe(jsHint.reporter())
