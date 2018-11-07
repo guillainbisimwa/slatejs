@@ -53,6 +53,6 @@
         "jshint": "~2.9",
         "marked": "~0.5",
         "merge-stream": "~1.0",
-        "node-sass": "~4.9"
+        "node-sass": "~4.10"
     }
 }
