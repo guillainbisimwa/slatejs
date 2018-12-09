@@ -1,7 +1,7 @@
 {
     "name": "node-slate",
     "version": "1.8.3",
-    "description": "Node port of tripit/slate",
+    "description": "Node port of lord/slate",
     "license": "Apache-2.0",
     "main": "build/index.html",
     "repository": "github:center-key/node-slate",
@@ -53,6 +53,6 @@
         "jshint": "~2.9",
         "marked": "~0.5",
         "merge-stream": "~1.0",
-        "node-sass": "~4.10"
+        "node-sass": "~4.11"
     }
 }
