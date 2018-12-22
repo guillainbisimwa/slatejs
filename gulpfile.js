@@ -28,11 +28,11 @@ const pkg = require('./package.json');
 const port = 4567;
 const htmlHintConfig = { 'attr-value-double-quotes': false };
 const jsHintConfig = {
-    jquery:  true,
-    browser: true,
-    undef:   true,
-    unused:  true,
-    };
+   jquery:  true,
+   browser: true,
+   undef:   true,
+   unused:  true,
+   };
 let compress = true;
 const jsFiles = {
    libs: [
@@ -67,7 +67,7 @@ const getPageData = () => {
       .map(include => `./source/includes/${include}.md`)
       .map(include => fs.readFileSync(include, 'utf8'))
       .map(include => marked(include, { renderer: renderer }));
-   return {
+   const getPageData = {
       current_page: { data: config },
       page_classes: '',
       includes: includes,
@@ -75,15 +75,14 @@ const getPageData = () => {
          const code = filename.split('.')[0];
          return `<img alt=${code} class=image-${code} src=images/${filename}>`;
          },
-      javascript_include_tag: (name) => {
-         return `<script src=javascripts/${name}.js type=text/javascript></script>\n`;
-         },
-      stylesheet_link_tag: (name, media) => {
-         return `<link href=stylesheets/${name}.css rel=stylesheet media=${media}>`;
-         },
+      javascript_include_tag: (name) =>
+         `<script src=javascripts/${name}.js type=text/javascript></script>\n`,
+      stylesheet_link_tag: (name, media) =>
+         `<link href=stylesheets/${name}.css rel=stylesheet media=${media}>`,
       langs: (config.language_tabs || []).map(
          lang => typeof lang == 'string' ? lang : lang.keys.first)
       };
+   return getPageData;
    };
 
 // Tasks
