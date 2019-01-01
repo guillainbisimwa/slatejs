@@ -51,7 +51,7 @@
         "highlight.js": "~9.13",
         "js-yaml": "~3.12",
         "jshint": "~2.9",
-        "marked": "~0.5",
+        "marked": "~0.6",
         "merge-stream": "~1.0",
         "node-sass": "~4.11"
     }
