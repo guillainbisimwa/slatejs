@@ -227,7 +227,7 @@
              if(this.options.selectors.indexOf(",") !== -1) {
 
                  // Grabs the first selector from the string
-                 firstElem = $(this.options.context).find(this.options.selectors.replace(/ /g,"").substr(0, this.options.selectors.indexOf(",")));
+                 firstElem = $(this.options.context).find(this.options.selectors.replace(/ /g,"").substring(0, this.options.selectors.indexOf(",")));
 
              }
 

@@ -1392,9 +1392,9 @@
 
       if (w.length < 3) { return w; }
 
-      firstch = w.substr(0,1);
+      firstch = w.substring(0,1);
       if (firstch == "y") {
-        w = firstch.toUpperCase() + w.substr(1);
+        w = firstch.toUpperCase() + w.substring(1);
       }
 
       // Step 1a
@@ -1503,7 +1503,7 @@
       // and turn initial Y back to y
 
       if (firstch == "y") {
-        w = firstch.toLowerCase() + w.substr(1);
+        w = firstch.toLowerCase() + w.substring(1);
       }
 
       return w;

@@ -89,8 +89,8 @@ under the License.
          var language = parseURL(location.search).language;
          if (language) {
             return language;
-            } else if (jQuery.inArray(location.search.substr(1), languages) != -1) {
-               return location.search.substr(1);
+            } else if (jQuery.inArray(location.search.substring(1), languages) != -1) {
+               return location.search.substring(1);
             }
          }
       return false;
