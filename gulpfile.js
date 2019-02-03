@@ -43,8 +43,7 @@ const jsFiles = {
       'node_modules/jquery-ui-dist/jquery-ui.js', //not ideal: https://stackoverflow.com/q/34219046
       'source/javascripts/lib/_jquery.tocify.js',
       // 'node_modules/jquery.tocify/src/javascripts/jquery.tocify.js',
-      'source/javascripts/lib/_imagesloaded.min.js',
-      // 'node_modules/imagesloaded/imagesloaded.pkgd.js'
+      'node_modules/imagesloaded/imagesloaded.pkgd.js'
       ],
    scripts: [
       'source/javascripts/app/_lang.js',

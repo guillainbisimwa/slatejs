@@ -1,5 +1,4 @@
 //= require ../lib/_jquery.tocify
-//= require ../lib/_imagesloaded.min
 (function(global) {
    'use strict';
    function makeToc() {
