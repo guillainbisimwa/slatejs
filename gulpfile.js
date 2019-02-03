@@ -42,7 +42,7 @@ const jsFiles = {
       'node_modules/jquery/dist/jquery.js',
       'node_modules/jquery-ui-dist/jquery-ui.js', //not ideal: https://stackoverflow.com/q/34219046
       'source/javascripts/lib/_jquery.tocify.js',
-      // 'node_modules/jquery.tocify/src/javascripts/jquery.tocify.js',
+      'node_modules/tocbot/dist/tocbot.js',  //see: https://github.com/center-key/node-slate/issues/8
       'node_modules/imagesloaded/imagesloaded.pkgd.js'
       ],
    scripts: [

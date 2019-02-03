@@ -60,6 +60,7 @@
         "lunr": "~2.3",
         "marked": "~0.6",
         "merge-stream": "~1.0",
-        "node-sass": "~4.11"
+        "node-sass": "~4.11",
+        "tocbot": "~4.4"
     }
 }
