@@ -17,6 +17,7 @@ const jsHint =        require('gulp-jshint');
 const marked =        require('marked');
 const mergeStream =   require('merge-stream');
 const open =          require('gulp-open');
+const path =          require('path');
 const prettify =      require('gulp-prettify');
 const rename =        require('gulp-rename');
 const sass =          require('gulp-sass');
@@ -38,24 +39,24 @@ const settings = {
    };
 const jsFiles = {
    libs: [
-      './source/javascripts/lib/_energize.js',
+      'source/javascripts/lib/_energize.js',
       'node_modules/jquery/dist/jquery.js',
       'node_modules/jquery-ui-dist/jquery-ui.js', //not ideal: https://stackoverflow.com/q/34219046
-      './source/javascripts/lib/_jquery.tocify.js',
+      'source/javascripts/lib/_jquery.tocify.js',
       // 'node_modules/jquery.tocify/src/javascripts/jquery.tocify.js',
-      './source/javascripts/lib/_imagesloaded.min.js',
+      'source/javascripts/lib/_imagesloaded.min.js',
       // 'node_modules/imagesloaded/imagesloaded.pkgd.js'
       ],
    scripts: [
-      './source/javascripts/app/_lang.js',
-      './source/javascripts/app/_toc.js',
+      'source/javascripts/app/_lang.js',
+      'source/javascripts/app/_toc.js',
       ],
    search: [
-      './source/javascripts/lib/_lunr.js',
+      'source/javascripts/lib/_lunr.js',
       // 'node_modules/lunr/lunr.js',
-      './source/javascripts/lib/_jquery.highlight.js',
+      'source/javascripts/lib/_jquery.highlight.js',
       // 'node_modules/jquery-highlight/jquery.highlight.js',
-      './source/javascripts/app/_search.js',
+      'source/javascripts/app/_search.js',
       ]
    };
 
@@ -66,11 +67,11 @@ renderer.code = (code, language) => {
       highlight.highlightAuto(code).value;
    return `<pre class="highlight ${language}"><code>${highlighted}</code></pre>`;
    };
-const readIndexYml = () => yaml.safeLoad(fs.readFileSync('./source/index.yml', 'utf8'));
+const readIndexYml = () => yaml.safeLoad(fs.readFileSync('source/index.yml', 'utf8'));
 const getPageData = () => {
    const config = readIndexYml();
    const includes = config.includes
-      .map(include => `./source/includes/${include}.md`)
+      .map(include => `source/includes/${include}.md`)
       .map(include => fs.readFileSync(include, 'utf8'))
       .map(include => marked(include, { renderer: renderer }));
    const getPageData = {
@@ -111,11 +112,11 @@ const task = {
          );
       },
    buildFonts: () => {
-      return gulp.src('./source/fonts/**/*')
+      return gulp.src('source/fonts/**/*')
          .pipe(gulp.dest('build/fonts'));
       },
    buildImages: () => {
-      return gulp.src('./source/images/**/*')
+      return gulp.src('source/images/**/*')
          .pipe(gulp.dest('build/images'));
       },
    buildJs: () => {
@@ -123,29 +124,29 @@ const task = {
       return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
          .pipe(concat('all.js'))
          .pipe(gulpIf(settings.compress, uglify()))
-         .pipe(gulp.dest('./build/javascripts'));
+         .pipe(gulp.dest('build/javascripts'));
       },
    buildCss: () => {
-      return gulp.src('./source/stylesheets/*.css.scss')
+      return gulp.src('source/stylesheets/*.css.scss')
          .pipe(sass().on('error', sass.logError))
          .pipe(rename({ extname: '' }))
          .pipe(gulpIf(settings.compress, cleanCss()))
-         .pipe(gulp.dest('./build/stylesheets'));
+         .pipe(gulp.dest('build/stylesheets'));
       },
    addHighlightStyle: () => {
       const config = readIndexYml();
-      const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
-      return gulp.src(path)
+      const cssPath = 'node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
+      return gulp.src(cssPath)
          .pipe(rename({ prefix: 'highlight-' }))
          .pipe(gulpIf(settings.compress, cleanCss()))
-         .pipe(gulp.dest('./build/stylesheets'));
+         .pipe(gulp.dest('build/stylesheets'));
       },
    buildHtml: () => {
       const data = getPageData();
-      return gulp.src('./source/*.html')
+      return gulp.src('source/*.html')
          .pipe(ejs(data).on('error', log.error))
          .pipe(gulpIf(settings.compress, prettify({ indent_size: 3 })))
-         .pipe(gulp.dest('./build'));
+         .pipe(gulp.dest('build'));
       },
    build: () => {
       return mergeStream(
@@ -162,16 +163,18 @@ const task = {
       return task.build();
       },
    runServer: () => {
-      gulp.watch('./source/*.html',           gulp.parallel('build-html'));
-      gulp.watch('./source/includes/**/*',    gulp.parallel('build-html'));
-      gulp.watch('./source/javascripts/**/*', gulp.parallel('build-js'));
-      gulp.watch('./source/stylesheets/**/*', gulp.parallel('build-css'));
-      gulp.watch('./source/index.yml',        gulp.parallel('build-highlightjs', 'build-js', 'build-html'));
+      gulp.watch('source/*.html',           gulp.parallel('build-html'));
+      gulp.watch('source/includes/**/*',    gulp.parallel('build-html'));
+      gulp.watch('source/javascripts/**/*', gulp.parallel('build-js'));
+      gulp.watch('source/stylesheets/**/*', gulp.parallel('build-css'));
+      gulp.watch('source/index.yml',        gulp.parallel('build-highlightjs', 'build-js', 'build-html'));
       const server = gls.static('build', port);
       server.start();
       const notifyServer = (file) => server.notify.apply(server, [file]);
       gulp.watch('build/**/*', notifyServer);
       gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
+      console.log('Slate markdown source:');
+      console.log(path.resolve('source'));
       }
    };
 
