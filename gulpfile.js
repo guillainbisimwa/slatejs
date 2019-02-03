@@ -39,7 +39,6 @@ const settings = {
    };
 const jsFiles = {
    libs: [
-      'source/javascripts/lib/_energize.js',
       'node_modules/jquery/dist/jquery.js',
       'node_modules/jquery-ui-dist/jquery-ui.js', //not ideal: https://stackoverflow.com/q/34219046
       'source/javascripts/lib/_jquery.tocify.js',
