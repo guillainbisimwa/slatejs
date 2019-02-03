@@ -186,7 +186,8 @@
             self._setEventHandlers();
 
             // Binding to the Window load event to make sure the correct scrollTop is calculated
-            $(window).load(function() {
+            // $(window).load(function() {  //see: https://stackoverflow.com/questions/37738732/jquery-3-0-url-indexof-error
+            $(window).on('load', function() {
 
                 // Sets the active TOC item
                 self._setActiveElement(true);

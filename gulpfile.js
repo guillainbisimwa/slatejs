@@ -33,14 +33,18 @@ const jsHintConfig = {
    undef:   true,
    unused:  true,
    };
-let compress = true;
+const settings = {
+   compress: true
+   };
 const jsFiles = {
    libs: [
       './source/javascripts/lib/_energize.js',
-      './source/javascripts/lib/_jquery.js',
-      './source/javascripts/lib/_jquery_ui.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/jquery-ui-dist/jquery-ui.js', //not ideal: https://stackoverflow.com/q/34219046
       './source/javascripts/lib/_jquery.tocify.js',
+      // 'node_modules/jquery.tocify/src/javascripts/jquery.tocify.js',
       './source/javascripts/lib/_imagesloaded.min.js',
+      // 'node_modules/imagesloaded/imagesloaded.pkgd.js'
       ],
    scripts: [
       './source/javascripts/app/_lang.js',
@@ -48,7 +52,9 @@ const jsFiles = {
       ],
    search: [
       './source/javascripts/lib/_lunr.js',
+      // 'node_modules/lunr/lunr.js',
       './source/javascripts/lib/_jquery.highlight.js',
+      // 'node_modules/jquery-highlight/jquery.highlight.js',
       './source/javascripts/app/_search.js',
       ]
    };
@@ -116,14 +122,14 @@ const task = {
       const config = readIndexYml();
       return gulp.src(jsFiles.libs.concat(config.search ? jsFiles.search : [], jsFiles.scripts))
          .pipe(concat('all.js'))
-         .pipe(gulpIf(compress, uglify()))
+         .pipe(gulpIf(settings.compress, uglify()))
          .pipe(gulp.dest('./build/javascripts'));
       },
    buildCss: () => {
       return gulp.src('./source/stylesheets/*.css.scss')
          .pipe(sass().on('error', sass.logError))
          .pipe(rename({ extname: '' }))
-         .pipe(gulpIf(compress, cleanCss()))
+         .pipe(gulpIf(settings.compress, cleanCss()))
          .pipe(gulp.dest('./build/stylesheets'));
       },
    addHighlightStyle: () => {
@@ -131,14 +137,14 @@ const task = {
       const path = './node_modules/highlight.js/styles/' + config.highlight_theme + '.css';
       return gulp.src(path)
          .pipe(rename({ prefix: 'highlight-' }))
-         .pipe(gulpIf(compress, cleanCss()))
+         .pipe(gulpIf(settings.compress, cleanCss()))
          .pipe(gulp.dest('./build/stylesheets'));
       },
    buildHtml: () => {
       const data = getPageData();
       return gulp.src('./source/*.html')
          .pipe(ejs(data).on('error', log.error))
-         .pipe(gulpIf(compress, prettify({ indent_size: 3 })))
+         .pipe(gulpIf(settings.compress, prettify({ indent_size: 3 })))
          .pipe(gulp.dest('./build'));
       },
    build: () => {
@@ -152,7 +158,7 @@ const task = {
          );
       },
    buildUncompressed: () => {
-      compress = false;
+      settings.compress = false;
       return task.build();
       },
    runServer: () => {

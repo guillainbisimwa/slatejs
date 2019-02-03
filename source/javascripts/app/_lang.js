@@ -1,5 +1,3 @@
-//= require ../lib/_jquery
-
 /*
 Copyright (c) 2017-2019 individual contributors to center-key/node-slate
 Copyright (c) 2015 SD Elements, Inc.
