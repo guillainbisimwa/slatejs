@@ -1,11 +1,9 @@
 @font-face {
    font-family: 'slate';
-   src:url('../fonts/slate.eot?-syv14m');
-   src:url('../fonts/slate.eot?#iefix-syv14m') format('embedded-opentype'),
+   src:
       url('../fonts/slate.woff2?-syv14m') format('woff2'),
-      url('../fonts/slate.woff?-syv14m') format('woff'),
-      url('../fonts/slate.ttf?-syv14m') format('truetype'),
-      url('../fonts/slate.svg?-syv14m#slate') format('svg');
+      url('../fonts/slate.woff?-syv14m')  format('woff'),
+      url('../fonts/slate.ttf?-syv14m')   format('truetype');
    font-weight: normal;
    font-style: normal;
    }
