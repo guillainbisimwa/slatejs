@@ -50,8 +50,8 @@ html, body {
 
 @mixin embossed-bg {
    background:
-      linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 8px),
-      linear-gradient(to top, rgba(#000, 0.2), rgba(#000, 0) 8px),
+      linear-gradient(to bottom, rgba(black, 0.2), rgba(black, 0) 8px),
+      linear-gradient(to top, rgba(black, 0.2), rgba(black, 0) 8px),
       linear-gradient(to bottom, rgba($nav-embossed-border-top, 1), rgba($nav-embossed-border-top, 0) 1.5px),
       linear-gradient(to top, rgba($nav-embossed-border-bottom, 1), rgba($nav-embossed-border-bottom, 0) 1.5px),
       $nav-subitem-bg;
@@ -152,9 +152,7 @@ html, body {
       }
    li {
       color: $nav-text;
-      transition-property: background;
-      transition-timing-function: linear;
-      transition-duration: 230ms;
+      transition: background-color 230ms linear;
       }
    .tocify-focus {  //currently selected ToC entry
       box-shadow: 0px 1px 0px $nav-active-shadow;
@@ -213,7 +211,7 @@ html, body {
    top: 0;
    left: 0;
    z-index: 100;
-   color: #000;
+   color: black;
    text-decoration: none;
    font-weight: bold;
    opacity: 0.7;
@@ -417,28 +415,35 @@ html, body {
       margin-bottom: 1.5em;
       background: $aside-notice-bg;
       line-height: 1.6;
+      &.success {
+         background-color: $aside-success-bg;
+         text-shadow: 0 1px 0 lighten($aside-success-bg, 15%);
+         }
       &.warning {
          background-color: $aside-warning-bg;
          text-shadow: 0 1px 0 lighten($aside-warning-bg, 15%);
          }
-      &.success {
-         background-color: $aside-success-bg;
-         text-shadow: 0 1px 0 lighten($aside-success-bg, 15%);
+      &.error {
+         background-color: $aside-error-bg;
+         text-shadow: 0 1px 0 lighten($aside-error-bg, 15%);
          }
       }
    aside:before {
       vertical-align: middle;
       padding-right: 0.5em;
       font-size: 14px;
-      }
-   aside.notice:before {
-      @extend %icon-info-sign;
-      }
-   aside.warning:before {
-      @extend %icon-exclamation-sign;
-      }
-   aside.success:before {
-      @extend %icon-ok-sign;
+      &.notice {
+         @extend %icon-info-sign;
+         }
+      &.success {
+         @extend %icon-ok-sign;
+         }
+      &.warning {
+         @extend %icon-exclamation-sign;
+         }
+      &.error {
+         @extend %icon-exclamation-sign;
+         }
       }
    .search-highlight {
       padding: 2px;
@@ -483,7 +488,7 @@ html, body {
          border-radius: 5px;
          padding: $code-annotation-padding;
          color: #ccc;
-         border-top: 1px solid #000;
+         border-top: 1px solid black;
          border-bottom: 1px solid #404040;
          }
       }
