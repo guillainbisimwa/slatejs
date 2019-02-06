@@ -173,7 +173,11 @@ const task = {
       gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
       console.log('Slate markdown source:');
       console.log(path.resolve('source'));
-      }
+      },
+   publishToDocs: () => {
+      return gulp.src('build/**/*')
+         .pipe(gulp.dest('docs'));
+   }
    };
 
 // Gulp
@@ -186,3 +190,4 @@ gulp.task('build-highlightjs',  task.addHighlightStyle);
 gulp.task('build-static-site',  task.build);
 gulp.task('build-uncompressed', task.buildUncompressed);
 gulp.task('serve',              task.runServer);
+gulp.task('publish',            task.publishToDocs);
