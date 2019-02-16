@@ -8,6 +8,7 @@
     "homepage": "https://github.com/center-key/node-slate",
     "bugs": "https://github.com/center-key/node-slate/issues",
     "docs": "https://github.com/center-key/node-slate#readme",
+    "author": "Various",
     "keywords": [
         "slate",
         "nodejs",
@@ -15,7 +16,6 @@
         "api-documentation",
         "static-site-generator"
     ],
-    "author": "Various",
     "jshintConfig": {
         "esversion": 6,
         "strict": "implied",
@@ -56,11 +56,11 @@
         "jquery-ui-dist": "~1.12",
         "jquery.tocify": "~1.9",
         "js-yaml": "~3.12",
-        "jshint": "~2.9",
+        "jshint": "~2.10",
         "lunr": "~2.3",
         "marked": "~0.6",
         "merge-stream": "~1.0",
         "node-sass": "~4.11",
-        "tocbot": "~4.4"
+        "tocbot": "~4.5"
     }
 }
