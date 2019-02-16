@@ -25,12 +25,6 @@
 [![Vulnerabilities](https://snyk.io/test/github/center-key/node-slate/badge.svg)](https://snyk.io/test/github/center-key/node-slate)
 [![Build](https://travis-ci.org/center-key/node-slate.svg)](https://travis-ci.org/center-key/node-slate)
 
-Fork
-----
-
-This project is a fork of [sdelements/node-slate](https://github.com/sdelements/node-slate) for the purpose of merging pull requests and keeping dependencies current.
-This fork is used by [gulp-node-slate](https://github.com/center-key/gulp-node-slate).
-
 Features
 --------
 
@@ -93,3 +87,8 @@ Publish your docs to `origin/gh-pages` branch:
 ```shell
 npm run deploy
 ```
+
+Gulp Task
+---------
+
+Slate API documentation generation is available as Gulp task with the [gulp-node-slate](https://github.com/center-key/gulp-node-slate) plugin.

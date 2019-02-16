@@ -1,6 +1,6 @@
 {
     "name": "node-slate",
-    "version": "1.8.4",
+    "version": "1.9.0",
     "description": "Node port of lord/slate",
     "license": "Apache-2.0",
     "main": "build/index.html",
