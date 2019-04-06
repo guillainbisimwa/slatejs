@@ -85,7 +85,7 @@ const getPageData = () => {
       stylesheet_link_tag: (name, media) =>
          `<link href=stylesheets/${name}.css rel=stylesheet media=${media}>`,
       langs: (config.language_tabs || []).map(
-         lang => typeof lang == 'string' ? lang : lang.keys.first)
+         lang => typeof lang === 'string' ? lang : lang.keys.first)
       };
    return getPageData;
    };
