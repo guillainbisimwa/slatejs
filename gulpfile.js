@@ -94,7 +94,7 @@ const getPageData = () => {
 const task = {
    clean: () => {
       console.log(pkg.name, 'v' + pkg.version);
-      return del(['build/*']);
+      return del(['build/*', '**/.DS_Store']);
       },
    runStaticAnalysis: () => {
       const ignoreDuplicateIds = (type, message) => !/^Duplicate ID/.test(message);
