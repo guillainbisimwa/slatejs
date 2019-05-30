@@ -82,9 +82,8 @@ runTasks() {
 
 openBrowser() {
    cd $projectHome
-   echo "Open:"
+   echo "Opening:"
    echo "$projectHome/$webPage"
-   echo "(use Chrome or Firefox)"  #macOS Safari encounters: SecurityError (DOM Exception 18)
    echo
    sleep 2
    open $webPage

@@ -1,6 +1,6 @@
 {
    "name": "node-slate",
-   "version": "1.9.0",
+   "version": "1.9.1",
    "description": "Node port of lord/slate",
    "license": "Apache-2.0",
    "main": "build/index.html",
@@ -26,7 +26,8 @@
    },
    "scripts": {
       "test": "jshint gulpfile.js",
-      "start": "gulp build-uncompressed && gulp serve",
+      "prestart": "gulp build-uncompressed",
+      "start": "gulp serve",
       "prebuild": "gulp clean",
       "build": "gulp build-static-site",
       "postbuild": "gulp lint && gulp publish",
