@@ -80,20 +80,20 @@ let kittens = api.kittens.get();
 
 ```json
 [
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
+   {
+      "id":         1,
+      "name":       "Fluffums",
+      "breed":      "calico",
+      "fluffiness": 6,
+      "cuteness":   7
+   },
+   {
+      "id":         2,
+      "name":       "Max",
+      "breed":      "unknown",
+      "fluffiness": 5,
+      "cuteness":   10
+   }
 ]
 ```
 
@@ -146,11 +146,11 @@ let max = api.kittens.get(2);
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+   "id":         2,
+   "name":       "Max",
+   "breed":      "unknown",
+   "fluffiness": 5,
+   "cuteness":   10
 }
 ```
 
