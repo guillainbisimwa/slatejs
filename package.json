@@ -63,6 +63,6 @@
       "marked": "~0.7",
       "merge-stream": "~2.0",
       "node-sass": "~4.12",
-      "tocbot": "~4.7"
+      "tocbot": "~4.8"
    }
 }
