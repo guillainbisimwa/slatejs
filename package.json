@@ -40,7 +40,7 @@
       "gulp-cli": "~2.2",
       "gulp-concat": "~2.6",
       "gulp-ejs": "~4.1",
-      "gulp-htmlhint": "~2.2",
+      "gulp-htmlhint": "~3.0",
       "gulp-if": "~3.0",
       "gulp-jshint": "~2.1",
       "gulp-live-server": "~0.0",
@@ -50,7 +50,7 @@
       "gulp-sass": "~4.0",
       "gulp-uglify": "~3.0",
       "gulp-w3c-html-validator": "~1.4",
-      "highlight.js": "~9.15",
+      "highlight.js": "~9.16",
       "imagesloaded": "~4.1",
       "jquery": "~3.4",
       "jquery-highlight": "~3.5",
@@ -62,7 +62,7 @@
       "lunr": "~2.3",
       "marked": "~0.7",
       "merge-stream": "~2.0",
-      "node-sass": "~4.12",
-      "tocbot": "~4.8"
+      "node-sass": "~4.13",
+      "tocbot": "~4.9"
    }
 }
