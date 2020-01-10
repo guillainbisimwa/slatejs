@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2017-2019 individual contributors to center-key/node-slate
+Copyright (c) 2017-2020 individual contributors to center-key/node-slate
 Copyright (c) 2015 SD Elements, Inc.
 Copyright (c) 2008-2013 Concur Technologies, Inc.
 
