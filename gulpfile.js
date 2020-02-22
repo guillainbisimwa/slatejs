@@ -81,7 +81,7 @@ const getPageData = () => {
          return `<img alt=${code} class=image-${code} src=images/${filename}>`;
          },
       javascript_include_tag: (name) =>
-         `<script src=javascripts/${name}.js type=text/javascript></script>\n`,
+         `<script src=javascripts/${name}.js></script>\n`,
       stylesheet_link_tag: (name, media) =>
          `<link href=stylesheets/${name}.css rel=stylesheet media=${media}>`,
       langs: (config.language_tabs || []).map(
