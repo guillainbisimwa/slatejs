@@ -1,6 +1,6 @@
 {
    "name": "node-slate",
-   "version": "1.9.2",
+   "version": "1.9.3",
    "description": "Node port of lord/slate",
    "license": "Apache-2.0",
    "main": "build/index.html",
@@ -10,10 +10,10 @@
    "docs": "https://github.com/center-key/node-slate#readme",
    "author": "Various",
    "keywords": [
-      "slate",
-      "nodejs",
-      "api",
       "api-documentation",
+      "api",
+      "nodejs",
+      "slate",
       "static-site-generator"
    ],
    "jshintConfig": {
