@@ -1,12 +1,12 @@
 // node-slate
 
 // Imports
+const browserSync =   require('browser-sync');
 const cleanCss =      require('gulp-clean-css');
 const concat =        require('gulp-concat');
 const del =           require('del');
 const ejs =           require('gulp-ejs');
 const fs =            require('fs');
-const gls =           require('gulp-live-server');
 const gulp =          require('gulp');
 const gulpIf =        require('gulp-if');
 const log =           require('fancy-log');
@@ -16,7 +16,6 @@ const htmlValidator = require('gulp-w3c-html-validator');
 const jsHint =        require('gulp-jshint');
 const marked =        require('marked');
 const mergeStream =   require('merge-stream');
-const open =          require('gulp-open');
 const path =          require('path');
 const prettify =      require('gulp-prettify');
 const rename =        require('gulp-rename');
@@ -166,11 +165,17 @@ const task = {
       gulp.watch('source/javascripts/**/*', gulp.parallel('build-js'));
       gulp.watch('source/stylesheets/**/*', gulp.parallel('build-css'));
       gulp.watch('source/index.yml',        gulp.parallel('build-highlightjs', 'build-js', 'build-html'));
-      const server = gls.static('build', port);
-      server.start();
-      const notifyServer = (file) => server.notify.apply(server, [file]);
-      gulp.watch('build/**/*', notifyServer);
-      gulp.src(__filename).pipe(open({ uri: 'http://localhost:' + port }));
+      let server = browserSync.create();
+      server.init({
+         open: true,
+         ui: false,
+         listen: 'localhost',
+         port: port,
+         server: {
+            baseDir: './build'
+            }
+         });
+      gulp.watch('build/**/*').on('change', server.reload);
       console.log('Slate markdown source:');
       console.log(path.resolve('source'));
       },
