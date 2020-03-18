@@ -7,7 +7,7 @@ language_tabs:
    - javascript
 
 toc_footers:
-   - <a href=#>Sign up for a developer key</a>
+   - <a href=https://github.com/center-key/node-slate>node-slate on GitHub</a>
    - <a href=https://www.npmjs.com/package/node-slate>Documentation powered by Slate</a>
 
 includes:

@@ -1,6 +1,7 @@
 # Downloaded and generated files
 /node_modules/
 /package-lock.json
+/yarn.lock
 /build/
 
 # Extraneous system files

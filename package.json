@@ -1,11 +1,11 @@
 {
    "name": "node-slate",
-   "version": "1.9.3",
+   "version": "1.9.4",
    "description": "Node port of lord/slate",
    "license": "Apache-2.0",
    "main": "build/index.html",
    "repository": "github:center-key/node-slate",
-   "homepage": "https://github.com/center-key/node-slate",
+   "homepage": "https://node-slate.js.org",
    "bugs": "https://github.com/center-key/node-slate/issues",
    "docs": "https://github.com/center-key/node-slate#readme",
    "author": "Various",
@@ -34,10 +34,10 @@
       "deploy": "deploy.sh"
    },
    "dependencies": {
-      "browser-sync": "^2.26.7",
+      "browser-sync": "~2.26",
       "del": "~5.1",
       "gulp": "~4.0",
-      "gulp-clean-css": "~4.2",
+      "gulp-clean-css": "~4.3",
       "gulp-cli": "~2.2",
       "gulp-concat": "~2.6",
       "gulp-ejs": "~5.0",

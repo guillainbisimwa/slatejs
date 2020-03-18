@@ -165,15 +165,13 @@ const task = {
       gulp.watch('source/javascripts/**/*', gulp.parallel('build-js'));
       gulp.watch('source/stylesheets/**/*', gulp.parallel('build-css'));
       gulp.watch('source/index.yml',        gulp.parallel('build-highlightjs', 'build-js', 'build-html'));
-      let server = browserSync.create();
+      const server = browserSync.create();
       server.init({
-         open: true,
-         ui: false,
+         open:   true,
+         ui:     false,
          listen: 'localhost',
-         port: port,
-         server: {
-            baseDir: './build'
-            }
+         port:   port,
+         server: { baseDir: './build' }
          });
       gulp.watch('build/**/*').on('change', server.reload);
       console.log('Slate markdown source:');
