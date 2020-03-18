@@ -34,6 +34,7 @@
       "deploy": "deploy.sh"
    },
    "dependencies": {
+      "browser-sync": "^2.26.7",
       "del": "~5.1",
       "gulp": "~4.0",
       "gulp-clean-css": "~4.2",
@@ -43,8 +44,6 @@
       "gulp-htmlhint": "~3.0",
       "gulp-if": "~3.0",
       "gulp-jshint": "~2.1",
-      "gulp-live-server": "~0.0",
-      "gulp-open": "~3.0",
       "gulp-prettify": "~0.5",
       "gulp-rename": "~2.0",
       "gulp-sass": "~4.0",
