@@ -49,10 +49,8 @@ const jsFiles = {
       'source/javascripts/app/_toc.js',
       ],
    search: [
-      'source/javascripts/lib/_lunr.js',   //see: https://github.com/center-key/node-slate/issues/9
-      // 'node_modules/lunr/lunr.js',
-      'source/javascripts/lib/_jquery.highlight.js',
-      // 'node_modules/jquery-highlight/jquery.highlight.js',
+      'node_modules/fuse.js/dist/fuse.js',
+      'node_modules/jquery-highlight/jquery.highlight.js',
       'source/javascripts/app/_search.js',
       ]
    };
