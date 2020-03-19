@@ -36,6 +36,7 @@
    "dependencies": {
       "browser-sync": "~2.26",
       "del": "~5.1",
+      "fuse.js": "^5.0.5-beta",
       "gulp": "~4.0",
       "gulp-clean-css": "~4.3",
       "gulp-cli": "~2.2",
@@ -58,7 +59,6 @@
       "jquery.tocify": "~1.9",
       "js-yaml": "~3.13",
       "jshint": "~2.11",
-      "lunr": "~2.3",
       "marked": "~0.8",
       "merge-stream": "~2.0",
       "node-sass": "~4.13",
