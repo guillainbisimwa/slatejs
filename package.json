@@ -1,6 +1,6 @@
 {
    "name": "node-slate",
-   "version": "1.9.4",
+   "version": "1.9.5",
    "description": "Node port of lord/slate",
    "license": "Apache-2.0",
    "main": "build/index.html",
@@ -36,7 +36,7 @@
    "dependencies": {
       "browser-sync": "~2.26",
       "del": "~5.1",
-      "fuse.js": "^5.0.5-beta",
+      "fuse.js": "^5.0.7-beta",
       "gulp": "~4.0",
       "gulp-clean-css": "~4.3",
       "gulp-cli": "~2.2",
