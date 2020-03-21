@@ -48,7 +48,7 @@
       function displayResult(index, result) {
          var ref = result.item.id;
          var elem = document.getElementById(ref);
-         searchResults.append('<li><a href=#' + result.ref + '>' + $(elem).text() + '</a></li>');
+         searchResults.append('<li><a href=#' + ref + '>' + $(elem).text() + '</a></li>');
          }
       if (this.value) {
          var results = index.search(this.value);
