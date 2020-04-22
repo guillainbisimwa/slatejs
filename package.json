@@ -36,12 +36,12 @@
    "dependencies": {
       "browser-sync": "~2.26",
       "del": "~5.1",
-      "fuse.js": "^5.0.7-beta",
+      "fuse.js": "~5.2",
       "gulp": "~4.0",
       "gulp-clean-css": "~4.3",
       "gulp-cli": "~2.2",
       "gulp-concat": "~2.6",
-      "gulp-ejs": "~5.0",
+      "gulp-ejs": "~5.1",
       "gulp-htmlhint": "~3.0",
       "gulp-if": "~3.0",
       "gulp-jshint": "~2.1",
@@ -50,18 +50,18 @@
       "gulp-sass": "~4.0",
       "gulp-uglify": "~3.0",
       "gulp-w3c-html-validator": "~2.0",
-      "highlight.js": "~9.18",
+      "highlight.js": "~10.0",
       "imagesloaded": "~4.1",
-      "jquery": "~3.4",
+      "jquery": "~3.5",
       "jquery-highlight": "~3.5",
       "jquery-ui": "~1.12",
       "jquery-ui-dist": "~1.12",
       "jquery.tocify": "~1.9",
       "js-yaml": "~3.13",
       "jshint": "~2.11",
-      "marked": "~0.8",
+      "marked": "~1.0",
       "merge-stream": "~2.0",
       "node-sass": "~4.13",
-      "tocbot": "~4.10"
+      "tocbot": "~4.11"
    }
 }
