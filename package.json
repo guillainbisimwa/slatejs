@@ -35,8 +35,8 @@
    },
    "dependencies": {
       "browser-sync": "~2.26",
-      "del": "~5.1",
-      "fuse.js": "~6.2",
+      "del": "~6.0",
+      "fuse.js": "~6.4",
       "gulp": "~4.0",
       "gulp-clean-css": "~4.3",
       "gulp-cli": "~2.3",
@@ -50,7 +50,7 @@
       "gulp-sass": "~4.1",
       "gulp-uglify": "~3.0",
       "gulp-w3c-html-validator": "~2.0",
-      "highlight.js": "~10.1",
+      "highlight.js": "~10.3",
       "imagesloaded": "~4.1",
       "jquery": "~3.5",
       "jquery-highlight": "~3.5",
@@ -58,10 +58,10 @@
       "jquery-ui-dist": "~1.12",
       "jquery.tocify": "~1.9",
       "js-yaml": "~3.14",
-      "jshint": "~2.11",
-      "marked": "~1.1",
+      "jshint": "~2.12",
+      "marked": "~1.2",
       "merge-stream": "~2.0",
       "node-sass": "~4.14",
-      "tocbot": "~4.11"
+      "tocbot": "~4.12"
    }
 }
