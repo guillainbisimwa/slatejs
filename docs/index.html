@@ -43,15 +43,15 @@
             <blockquote>
                <p>To authorize, use this code:</p>
             </blockquote>
-            <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
+            <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;kittn&#x27;</span>
 
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
+api = Kittn::APIClient.authorize!(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
 
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)</code></pre><pre class="highlight bash"><code><span class="hljs-comment"># With shell, you can just pass the correct header with each request</span>
-curl <span class="hljs-string">"api_endpoint_here"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
+api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)</code></pre><pre class="highlight bash"><code><span class="hljs-comment"># With shell, you can just pass the correct header with each request</span>
+curl <span class="hljs-string">&quot;api_endpoint_here&quot;</span>
+  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;kittn&#x27;</span>);
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);</code></pre>
+<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);</code></pre>
             <blockquote>
                <p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
             </blockquote>
@@ -61,34 +61,34 @@ curl <span class="hljs-string">"api_endpoint_here"</span>
             <aside class=notice> You must replace <code>meowmeowmeow</code> with your personal API key. </aside>
             <h1 id="kittens">Kittens</h1>
             <h2 id="get-all-kittens">Get All Kittens</h2>
-            <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
+            <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;kittn&#x27;</span>
 
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)
+api = Kittn::APIClient.authorize!(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
 api.kittens.get</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
 
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get()</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">"https://example.com/api/kittens"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
+api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
+api.kittens.get()</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">&quot;https://example.com/api/kittens&quot;</span>
+  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;kittn&#x27;</span>);
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);
+<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
 <span class="hljs-keyword">let</span> kittens = api.kittens.get();</code></pre>
             <blockquote>
                <p>The above command returns JSON structured like this:</p>
             </blockquote>
             <pre class="highlight json"><code>[
    {
-      <span class="hljs-attr">"id"</span>:         <span class="hljs-number">1</span>,
-      <span class="hljs-attr">"name"</span>:       <span class="hljs-string">"Fluffums"</span>,
-      <span class="hljs-attr">"breed"</span>:      <span class="hljs-string">"calico"</span>,
-      <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">6</span>,
-      <span class="hljs-attr">"cuteness"</span>:   <span class="hljs-number">7</span>
+      <span class="hljs-attr">&quot;id&quot;</span>:         <span class="hljs-number">1</span>,
+      <span class="hljs-attr">&quot;name&quot;</span>:       <span class="hljs-string">&quot;Fluffums&quot;</span>,
+      <span class="hljs-attr">&quot;breed&quot;</span>:      <span class="hljs-string">&quot;calico&quot;</span>,
+      <span class="hljs-attr">&quot;fluffiness&quot;</span>: <span class="hljs-number">6</span>,
+      <span class="hljs-attr">&quot;cuteness&quot;</span>:   <span class="hljs-number">7</span>
    },
    {
-      <span class="hljs-attr">"id"</span>:         <span class="hljs-number">2</span>,
-      <span class="hljs-attr">"name"</span>:       <span class="hljs-string">"Max"</span>,
-      <span class="hljs-attr">"breed"</span>:      <span class="hljs-string">"unknown"</span>,
-      <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">5</span>,
-      <span class="hljs-attr">"cuteness"</span>:   <span class="hljs-number">10</span>
+      <span class="hljs-attr">&quot;id&quot;</span>:         <span class="hljs-number">2</span>,
+      <span class="hljs-attr">&quot;name&quot;</span>:       <span class="hljs-string">&quot;Max&quot;</span>,
+      <span class="hljs-attr">&quot;breed&quot;</span>:      <span class="hljs-string">&quot;unknown&quot;</span>,
+      <span class="hljs-attr">&quot;fluffiness&quot;</span>: <span class="hljs-number">5</span>,
+      <span class="hljs-attr">&quot;cuteness&quot;</span>:   <span class="hljs-number">10</span>
    }
 ]</code></pre>
             <p>This endpoint retrieves all kittens.</p>
@@ -118,26 +118,26 @@ api.kittens.get()</code></pre><pre class="highlight bash"><code>curl <span class
             </table>
             <aside class=success> Remember — a happy kitten is an authenticated kitten! </aside>
             <h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-            <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
+            <pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;kittn&#x27;</span>
 
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)
+api = Kittn::APIClient.authorize!(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
 api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
 
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">"https://example.com/api/kittens/2"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
+api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
+api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">&quot;https://example.com/api/kittens/2&quot;</span>
+  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;kittn&#x27;</span>);
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);
+<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
 <span class="hljs-keyword">let</span> max = api.kittens.get(<span class="hljs-number">2</span>);</code></pre>
             <blockquote>
                <p>The above command returns JSON structured like this:</p>
             </blockquote>
             <pre class="highlight json"><code>{
-   <span class="hljs-attr">"id"</span>:         <span class="hljs-number">2</span>,
-   <span class="hljs-attr">"name"</span>:       <span class="hljs-string">"Max"</span>,
-   <span class="hljs-attr">"breed"</span>:      <span class="hljs-string">"unknown"</span>,
-   <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">5</span>,
-   <span class="hljs-attr">"cuteness"</span>:   <span class="hljs-number">10</span>
+   <span class="hljs-attr">&quot;id&quot;</span>:         <span class="hljs-number">2</span>,
+   <span class="hljs-attr">&quot;name&quot;</span>:       <span class="hljs-string">&quot;Max&quot;</span>,
+   <span class="hljs-attr">&quot;breed&quot;</span>:      <span class="hljs-string">&quot;unknown&quot;</span>,
+   <span class="hljs-attr">&quot;fluffiness&quot;</span>: <span class="hljs-number">5</span>,
+   <span class="hljs-attr">&quot;cuteness&quot;</span>:   <span class="hljs-number">10</span>
 }</code></pre>
             <p>This endpoint retrieves a specific kitten.</p>
             <aside class=warning> Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code. </aside>
