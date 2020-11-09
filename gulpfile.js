@@ -169,7 +169,8 @@ const task = {
          ui:     false,
          listen: 'localhost',
          port:   port,
-         server: { baseDir: './build' }
+         server: { baseDir: '.' },
+         startPath: 'build',
          });
       gulp.watch('build/**/*').on('change', server.reload);
       console.log('Slate markdown source:');
