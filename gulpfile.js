@@ -34,7 +34,7 @@ const jsHintConfig = {
    unused:  true,
    };
 const settings = {
-   compress: true
+   compress: true,
    };
 const jsFiles = {
    libs: [
@@ -42,7 +42,7 @@ const jsFiles = {
       'node_modules/jquery-ui-dist/jquery-ui.js', //not ideal: https://stackoverflow.com/q/34219046
       'source/javascripts/lib/_jquery.tocify.js',
       'node_modules/tocbot/dist/tocbot.js',  //see: https://github.com/center-key/node-slate/issues/8
-      'node_modules/imagesloaded/imagesloaded.pkgd.js'
+      'node_modules/imagesloaded/imagesloaded.pkgd.js',
       ],
    scripts: [
       'source/javascripts/app/_lang.js',
@@ -52,7 +52,7 @@ const jsFiles = {
       'node_modules/fuse.js/dist/fuse.js',
       'node_modules/jquery-highlight/jquery.highlight.js',
       'source/javascripts/app/_search.js',
-      ]
+      ],
    };
 
 // Helper functions
@@ -62,27 +62,26 @@ renderer.code = (code, language) => {
       highlight.highlightAuto(code).value;
    return `<pre class="highlight ${language}"><code>${highlighted}</code></pre>`;
    };
-const readIndexYml = () => yaml.safeLoad(fs.readFileSync('source/index.yml', 'utf8'));
+const readIndexYml = () => yaml.load(fs.readFileSync('source/index.yml', 'utf8'));
 const getPageData = () => {
    const config = readIndexYml();
    const includes = config.includes
       .map(include => `source/includes/${include}.md`)
       .map(include => fs.readFileSync(include, 'utf8'))
       .map(include => marked(include, { renderer: renderer }));
+   const code = (filename) => filename.split('.')[0];
    const getPageData = {
       current_page: { data: config },
       page_classes: '',
       includes: includes,
-      image_tag: (filename) => {
-         const code = filename.split('.')[0];
-         return `<img alt=${code} class=image-${code} src=images/${filename}>`;
-         },
+      image_tag: (filename) =>
+         `<img alt=${code(filename)} class=image-${code(filename)} src=images/${filename}>`,
       javascript_include_tag: (name) =>
          `<script src=javascripts/${name}.js></script>\n`,
       stylesheet_link_tag: (name, media) =>
          `<link href=stylesheets/${name}.css rel=stylesheet media=${media}>`,
       langs: (config.language_tabs || []).map(
-         lang => typeof lang === 'string' ? lang : lang.keys.first)
+         lang => typeof lang === 'string' ? lang : lang.keys.first),
       };
    return getPageData;
    };
@@ -103,7 +102,7 @@ const task = {
             .pipe(htmlValidator.reporter()),
          gulp.src(jsFiles.scripts)
             .pipe(jsHint(jsHintConfig))
-            .pipe(jsHint.reporter())
+            .pipe(jsHint.reporter()),
          );
       },
    buildFonts: () => {
@@ -150,7 +149,7 @@ const task = {
          task.buildJs(),
          task.buildCss(),
          task.addHighlightStyle(),
-         task.buildHtml()
+         task.buildHtml(),
          );
       },
    buildUncompressed: () => {
@@ -181,7 +180,7 @@ const task = {
       fs.writeFileSync('docs/CNAME', 'node-slate.js.org\n');
       return gulp.src('build/**/*')
          .pipe(gulp.dest('docs'));
-      }
+      },
    };
 
 // Gulp

@@ -57,7 +57,7 @@
       "jquery-ui": "~1.12",
       "jquery-ui-dist": "~1.12",
       "jquery.tocify": "~1.9",
-      "js-yaml": "~3.14",
+      "js-yaml": "~4.0",
       "jshint": "~2.12",
       "marked": "~1.2",
       "merge-stream": "~2.0",
