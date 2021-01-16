@@ -1,30 +1,31 @@
 // node-slate
 
 // Imports
-const browserSync =   require('browser-sync');
-const cleanCss =      require('gulp-clean-css');
-const concat =        require('gulp-concat');
-const del =           require('del');
-const ejs =           require('gulp-ejs');
-const fs =            require('fs');
-const gulp =          require('gulp');
-const gulpIf =        require('gulp-if');
-const log =           require('fancy-log');
-const highlight =     require('highlight.js');
-const htmlHint =      require('gulp-htmlhint');
-const htmlValidator = require('gulp-w3c-html-validator');
-const jsHint =        require('gulp-jshint');
-const marked =        require('marked');
-const mergeStream =   require('merge-stream');
-const path =          require('path');
-const prettify =      require('gulp-prettify');
-const rename =        require('gulp-rename');
-const sass =          require('gulp-sass');
-const uglify =        require('gulp-uglify');
-const yaml =          require('js-yaml');
+import browserSync from   'browser-sync';
+import cleanCss from      'gulp-clean-css';
+import concat from        'gulp-concat';
+import del from           'del';
+import ejs from           'gulp-ejs';
+import fs from            'fs';
+import gulp from          'gulp';
+import gulpIf from        'gulp-if';
+import log from           'fancy-log';
+import highlight from     'highlight.js';
+import htmlHint from      'gulp-htmlhint';
+import htmlValidator from 'gulp-w3c-html-validator';
+import jsHint from        'gulp-jshint';
+import marked from        'marked';
+import mergeStream from   'merge-stream';
+import path from          'path';
+import prettify from      'gulp-prettify';
+import rename from        'gulp-rename';
+import sass from          'gulp-sass';
+import uglify from        'gulp-uglify';
+import yaml from          'js-yaml';
+import { readFileSync } from 'fs';
 
 // Setup
-const pkg = require('./package.json');
+const pkg = JSON.parse(readFileSync('./package.json'));
 const port = 4567;
 const htmlHintConfig = { 'attr-value-double-quotes': false };
 const jsHintConfig = {

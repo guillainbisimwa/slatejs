@@ -22,7 +22,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/center-key/node-slate/blob/master/LICENSE.txt)
 [![npm](https://img.shields.io/npm/v/node-slate.svg)](https://www.npmjs.com/package/node-slate)
 [![Vulnerabilities](https://snyk.io/test/github/center-key/node-slate/badge.svg)](https://snyk.io/test/github/center-key/node-slate)
-[![Build](https://travis-ci.com/center-key/node-slate.svg)](https://travis-ci.com/center-key/node-slate)
+[![Build](https://travis-ci.org/center-key/node-slate.svg)](https://travis-ci.org/center-key/node-slate)
 
 Features
 --------
