@@ -12,7 +12,6 @@ import gulpIf from        'gulp-if';
 import log from           'fancy-log';
 import highlight from     'highlight.js';
 import htmlHint from      'gulp-htmlhint';
-import htmlValidator from 'gulp-w3c-html-validator';
 import jsHint from        'gulp-jshint';
 import marked from        'marked';
 import mergeStream from   'merge-stream';
@@ -22,6 +21,7 @@ import rename from        'gulp-rename';
 import sass from          'gulp-sass';
 import uglify from        'gulp-uglify';
 import yaml from          'js-yaml';
+import { htmlValidator } from 'gulp-w3c-html-validator';
 import { readFileSync } from 'fs';
 
 // Setup
@@ -99,7 +99,7 @@ const task = {
          gulp.src('build/index.html')
             .pipe(htmlHint(htmlHintConfig))
             .pipe(htmlHint.reporter())
-            .pipe(htmlValidator({ verifyMessage: ignoreDuplicateIds }))
+            .pipe(htmlValidator.analyzer({ verifyMessage: ignoreDuplicateIds }))
             .pipe(htmlValidator.reporter()),
          gulp.src(jsFiles.scripts)
             .pipe(jsHint(jsHintConfig))
