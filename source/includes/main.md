@@ -29,9 +29,9 @@ curl "api_endpoint_here"
 ```
 
 ```javascript
-const kittn = require('kittn');
+import { kittn } from 'kittn';
 
-let api = kittn.authorize('meowmeowmeow');
+const api = kittn.authorize('meowmeowmeow');
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
@@ -70,10 +70,10 @@ curl "https://example.com/api/kittens"
 ```
 
 ```javascript
-const kittn = require('kittn');
+import { kittn } from 'kittn';
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+const api = kittn.authorize('meowmeowmeow');
+const kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -136,10 +136,10 @@ curl "https://example.com/api/kittens/2"
 ```
 
 ```javascript
-const kittn = require('kittn');
+import { kittn } from 'kittn';
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+const api = kittn.authorize('meowmeowmeow');
+const max = api.kittens.get(2);
 ```
 
 > The above command returns JSON structured like this:
