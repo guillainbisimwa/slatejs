@@ -49,9 +49,9 @@ api = Kittn::APIClient.authorize!(<span class="hljs-string">&#x27;meowmeowmeow&#
 
 api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)</code></pre><pre class="highlight bash"><code><span class="hljs-comment"># With shell, you can just pass the correct header with each request</span>
 curl <span class="hljs-string">&quot;api_endpoint_here&quot;</span>
-  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;kittn&#x27;</span>);
+  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { kittn } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;kittn&#x27;</span>;
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);</code></pre>
+<span class="hljs-keyword">const</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);</code></pre>
             <blockquote>
                <p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
             </blockquote>
@@ -68,10 +68,10 @@ api.kittens.get</code></pre><pre class="highlight python"><code><span class="hlj
 
 api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
 api.kittens.get()</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">&quot;https://example.com/api/kittens&quot;</span>
-  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;kittn&#x27;</span>);
+  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { kittn } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;kittn&#x27;</span>;
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
-<span class="hljs-keyword">let</span> kittens = api.kittens.get();</code></pre>
+<span class="hljs-keyword">const</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
+<span class="hljs-keyword">const</span> kittens = api.kittens.get();</code></pre>
             <blockquote>
                <p>The above command returns JSON structured like this:</p>
             </blockquote>
@@ -125,10 +125,10 @@ api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="high
 
 api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
 api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">&quot;https://example.com/api/kittens/2&quot;</span>
-  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;kittn&#x27;</span>);
+  -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { kittn } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;kittn&#x27;</span>;
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
-<span class="hljs-keyword">let</span> max = api.kittens.get(<span class="hljs-number">2</span>);</code></pre>
+<span class="hljs-keyword">const</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
+<span class="hljs-keyword">const</span> max = api.kittens.get(<span class="hljs-number">2</span>);</code></pre>
             <blockquote>
                <p>The above command returns JSON structured like this:</p>
             </blockquote>
