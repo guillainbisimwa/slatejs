@@ -6,7 +6,6 @@ import cleanCss from      'gulp-clean-css';
 import concat from        'gulp-concat';
 import del from           'del';
 import ejs from           'gulp-ejs';
-import fs from            'fs';
 import gulp from          'gulp';
 import gulpIf from        'gulp-if';
 import log from           'fancy-log';
@@ -22,7 +21,7 @@ import sass from          'gulp-sass';
 import uglify from        'gulp-uglify';
 import yaml from          'js-yaml';
 import { htmlValidator } from 'gulp-w3c-html-validator';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 
 // Setup
 const pkg = JSON.parse(readFileSync('./package.json'));
@@ -63,12 +62,12 @@ renderer.code = (code, language) => {
       highlight.highlightAuto(code).value;
    return `<pre class="highlight ${language}"><code>${highlighted}</code></pre>`;
    };
-const readIndexYml = () => yaml.load(fs.readFileSync('source/index.yml', 'utf8'));
+const readIndexYml = () => yaml.load(readFileSync('source/index.yml', 'utf8'));
 const getPageData = () => {
    const config = readIndexYml();
    const includes = config.includes
       .map(include => `source/includes/${include}.md`)
-      .map(include => fs.readFileSync(include, 'utf8'))
+      .map(include => readFileSync(include, 'utf8'))
       .map(include => marked(include, { renderer: renderer }));
    const code = (filename) => filename.split('.')[0];
    const getPageData = {
@@ -177,8 +176,8 @@ const task = {
       console.log(path.resolve('source'));
       },
    publishToDocs: () => {
-      // fs.mkdirSync('docs');
-      fs.writeFileSync('docs/CNAME', 'node-slate.js.org\n');
+      // mkdirSync('docs');
+      writeFileSync('docs/CNAME', 'node-slate.js.org\n');
       return gulp.src('build/**/*')
          .pipe(gulp.dest('docs'));
       },
