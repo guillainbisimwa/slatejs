@@ -26,13 +26,13 @@
       "unused": true
    },
    "scripts": {
-      "test": "jshint gulpfile.js",
-      "prestart": "gulp build-uncompressed",
-      "start": "gulp serve",
-      "prebuild": "gulp clean",
-      "build": "gulp build-static-site",
+      "test": "     jshint gulpfile.js",
+      "prestart": " gulp build-uncompressed",
+      "start": "    gulp serve",
+      "prebuild": " gulp clean",
+      "build": "    gulp build-static-site",
       "postbuild": "gulp lint && gulp publish",
-      "deploy": "deploy.sh"
+      "deploy": "   deploy.sh"
    },
    "dependencies": {
       "browser-sync": "~2.26",
