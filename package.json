@@ -51,7 +51,7 @@
       "gulp-sass": "~4.1",
       "gulp-uglify": "~3.0",
       "gulp-w3c-html-validator": "~3.0",
-      "highlight.js": "~10.5",
+      "highlight.js": "~10.6",
       "imagesloaded": "~4.1",
       "jquery": "~3.5",
       "jquery-highlight": "~3.5",
@@ -60,7 +60,7 @@
       "jquery.tocify": "~1.9",
       "js-yaml": "~4.0",
       "jshint": "~2.12",
-      "marked": "~1.2",
+      "marked": "~2.0",
       "merge-stream": "~2.0",
       "node-sass": "~5.0",
       "tocbot": "~4.12"
