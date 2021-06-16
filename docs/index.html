@@ -51,7 +51,7 @@ api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
 curl <span class="hljs-string">&quot;api_endpoint_here&quot;</span>
   -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { kittn } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;kittn&#x27;</span>;
 
-<span class="hljs-keyword">const</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);</code></pre>
+<span class="hljs-keyword">const</span> api = kittn.<span class="hljs-title function_">authorize</span>(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);</code></pre>
             <blockquote>
                <p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
             </blockquote>
@@ -70,27 +70,27 @@ api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
 api.kittens.get()</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">&quot;https://example.com/api/kittens&quot;</span>
   -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { kittn } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;kittn&#x27;</span>;
 
-<span class="hljs-keyword">const</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
-<span class="hljs-keyword">const</span> kittens = api.kittens.get();</code></pre>
+<span class="hljs-keyword">const</span> api = kittn.<span class="hljs-title function_">authorize</span>(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
+<span class="hljs-keyword">const</span> kittens = api.<span class="hljs-property">kittens</span>.<span class="hljs-title function_">get</span>();</code></pre>
             <blockquote>
                <p>The above command returns JSON structured like this:</p>
             </blockquote>
-            <pre class="highlight json"><code>[
-   {
-      <span class="hljs-attr">&quot;id&quot;</span>:         <span class="hljs-number">1</span>,
-      <span class="hljs-attr">&quot;name&quot;</span>:       <span class="hljs-string">&quot;Fluffums&quot;</span>,
-      <span class="hljs-attr">&quot;breed&quot;</span>:      <span class="hljs-string">&quot;calico&quot;</span>,
-      <span class="hljs-attr">&quot;fluffiness&quot;</span>: <span class="hljs-number">6</span>,
-      <span class="hljs-attr">&quot;cuteness&quot;</span>:   <span class="hljs-number">7</span>
-   },
-   {
-      <span class="hljs-attr">&quot;id&quot;</span>:         <span class="hljs-number">2</span>,
-      <span class="hljs-attr">&quot;name&quot;</span>:       <span class="hljs-string">&quot;Max&quot;</span>,
-      <span class="hljs-attr">&quot;breed&quot;</span>:      <span class="hljs-string">&quot;unknown&quot;</span>,
-      <span class="hljs-attr">&quot;fluffiness&quot;</span>: <span class="hljs-number">5</span>,
-      <span class="hljs-attr">&quot;cuteness&quot;</span>:   <span class="hljs-number">10</span>
-   }
-]</code></pre>
+            <pre class="highlight json"><code><span class="hljs-punctuation">[</span>
+   <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span>         <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span>       <span class="hljs-string">&quot;Fluffums&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;breed&quot;</span><span class="hljs-punctuation">:</span>      <span class="hljs-string">&quot;calico&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;fluffiness&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">6</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;cuteness&quot;</span><span class="hljs-punctuation">:</span>   <span class="hljs-number">7</span>
+   <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span>         <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span>       <span class="hljs-string">&quot;Max&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;breed&quot;</span><span class="hljs-punctuation">:</span>      <span class="hljs-string">&quot;unknown&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;fluffiness&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;cuteness&quot;</span><span class="hljs-punctuation">:</span>   <span class="hljs-number">10</span>
+   <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span></code></pre>
             <p>This endpoint retrieves all kittens.</p>
             <h3 id="http-request">HTTP Request</h3>
             <p><code>GET https://example.com/api/kittens</code></p>
@@ -127,18 +127,18 @@ api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>)
 api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">&quot;https://example.com/api/kittens/2&quot;</span>
   -H <span class="hljs-string">&quot;Authorization: meowmeowmeow&quot;</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { kittn } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;kittn&#x27;</span>;
 
-<span class="hljs-keyword">const</span> api = kittn.authorize(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
-<span class="hljs-keyword">const</span> max = api.kittens.get(<span class="hljs-number">2</span>);</code></pre>
+<span class="hljs-keyword">const</span> api = kittn.<span class="hljs-title function_">authorize</span>(<span class="hljs-string">&#x27;meowmeowmeow&#x27;</span>);
+<span class="hljs-keyword">const</span> max = api.<span class="hljs-property">kittens</span>.<span class="hljs-title function_">get</span>(<span class="hljs-number">2</span>);</code></pre>
             <blockquote>
                <p>The above command returns JSON structured like this:</p>
             </blockquote>
-            <pre class="highlight json"><code>{
-   <span class="hljs-attr">&quot;id&quot;</span>:         <span class="hljs-number">2</span>,
-   <span class="hljs-attr">&quot;name&quot;</span>:       <span class="hljs-string">&quot;Max&quot;</span>,
-   <span class="hljs-attr">&quot;breed&quot;</span>:      <span class="hljs-string">&quot;unknown&quot;</span>,
-   <span class="hljs-attr">&quot;fluffiness&quot;</span>: <span class="hljs-number">5</span>,
-   <span class="hljs-attr">&quot;cuteness&quot;</span>:   <span class="hljs-number">10</span>
-}</code></pre>
+            <pre class="highlight json"><code><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span>         <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span>       <span class="hljs-string">&quot;Max&quot;</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;breed&quot;</span><span class="hljs-punctuation">:</span>      <span class="hljs-string">&quot;unknown&quot;</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;fluffiness&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;cuteness&quot;</span><span class="hljs-punctuation">:</span>   <span class="hljs-number">10</span>
+<span class="hljs-punctuation">}</span></code></pre>
             <p>This endpoint retrieves a specific kitten.</p>
             <aside class=warning> Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code. </aside>
             <h3 id="http-request-with-id">HTTP Request (with ID)</h3>
