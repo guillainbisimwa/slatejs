@@ -35,7 +35,7 @@
       "deploy": "   deploy.sh"
    },
    "dependencies": {
-      "browser-sync": "~2.26",
+      "browser-sync": "~2.27",
       "del": "~6.0",
       "fuse.js": "~6.4",
       "gulp": "~4.0",
@@ -48,9 +48,9 @@
       "gulp-jshint": "~2.1",
       "gulp-prettify": "~0.5",
       "gulp-rename": "~2.0",
-      "gulp-sass": "~4.1",
+      "gulp-sass": "~5.0",
       "gulp-uglify": "~3.0",
-      "gulp-w3c-html-validator": "~3.2",
+      "gulp-w3c-html-validator": "~5.0",
       "highlight.js": "~11.0",
       "imagesloaded": "~4.1",
       "jquery": "~3.6",
@@ -63,6 +63,7 @@
       "marked": "~2.1",
       "merge-stream": "~2.0",
       "node-sass": "~6.0",
+      "sass": "~1.35",
       "tocbot": "~4.12"
    }
 }

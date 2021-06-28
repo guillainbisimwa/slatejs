@@ -8,7 +8,7 @@
    font-style: normal;
    }
 
-%icon {
+@mixin Icon {
    font-family: 'slate';
    speak: none;
    font-style: normal;
@@ -19,21 +19,21 @@
    }
 
 %icon-exclamation-sign {
-   @extend %icon;
+   @include Icon;
    content: "\e600";
    }
 
 %icon-info-sign {
-   @extend %icon;
+   @include Icon;
    content: "\e602";
    }
 
 %icon-ok-sign {
-   @extend %icon;
+   @include Icon;
    content: "\e606";
    }
 
 %icon-search {
-   @extend %icon;
+   @include Icon;
    content: "\e607";
    }

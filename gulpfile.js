@@ -1,25 +1,26 @@
 // node-slate
 
 // Imports
-import browserSync from 'browser-sync';
-import cleanCss from    'gulp-clean-css';
-import concat from      'gulp-concat';
-import del from         'del';
-import ejs from         'gulp-ejs';
-import gulp from        'gulp';
-import gulpIf from      'gulp-if';
-import log from         'fancy-log';
-import highlight from   'highlight.js';
-import htmlHint from    'gulp-htmlhint';
-import jsHint from      'gulp-jshint';
-import marked from      'marked';
-import mergeStream from 'merge-stream';
-import path from        'path';
-import prettify from    'gulp-prettify';
-import rename from      'gulp-rename';
-import sass from        'gulp-sass';
-import uglify from      'gulp-uglify';
-import yaml from        'js-yaml';
+import browserSync from  'browser-sync';
+import cleanCss from     'gulp-clean-css';
+import concat from       'gulp-concat';
+import del from          'del';
+import ejs from          'gulp-ejs';
+import gulp from         'gulp';
+import gulpIf from       'gulp-if';
+import highlight from    'highlight.js';
+import htmlHint from     'gulp-htmlhint';
+import jsHint from       'gulp-jshint';
+import log from          'fancy-log';
+import marked from       'marked';
+import mergeStream from  'merge-stream';
+import path from         'path';
+import prettify from     'gulp-prettify';
+import rename from       'gulp-rename';
+import sassCompiler from 'sass';
+import sassPlugin from   'gulp-sass';
+import uglify from       'gulp-uglify';
+import yaml from         'js-yaml';
 import { htmlValidator } from 'gulp-w3c-html-validator';
 import { readFileSync, writeFileSync } from 'fs';
 
@@ -27,6 +28,7 @@ import { readFileSync, writeFileSync } from 'fs';
 const pkg = JSON.parse(readFileSync('./package.json'));
 const port = 4567;
 const htmlHintConfig = { 'attr-value-double-quotes': false };
+const sass = sassPlugin(sassCompiler);
 const jsHintConfig = {
    jquery:  true,
    browser: true,
