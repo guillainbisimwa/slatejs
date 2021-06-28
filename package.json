@@ -62,7 +62,6 @@
       "jshint": "~2.13",
       "marked": "~2.1",
       "merge-stream": "~2.0",
-      "node-sass": "~6.0",
       "sass": "~1.35",
       "tocbot": "~4.12"
    }
