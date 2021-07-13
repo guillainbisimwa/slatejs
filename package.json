@@ -51,7 +51,7 @@
       "gulp-sass": "~5.0",
       "gulp-uglify": "~3.0",
       "gulp-w3c-html-validator": "~5.0",
-      "highlight.js": "~11.0",
+      "highlight.js": "~11.1",
       "imagesloaded": "~4.1",
       "jquery": "~3.6",
       "jquery-highlight": "~3.5",
