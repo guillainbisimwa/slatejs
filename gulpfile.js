@@ -166,11 +166,11 @@ const task = {
       gulp.watch('source/index.yml',        gulp.parallel('build-highlightjs', 'build-js', 'build-html'));
       const server = browserSync.create();
       server.init({
-         open:   true,
-         ui:     false,
-         listen: 'localhost',
-         port:   port,
-         server: { baseDir: '.' },
+         open:      true,
+         ui:        false,
+         listen:    'localhost',
+         port:      port,
+         server:    { baseDir: '.' },
          startPath: 'build',
          });
       gulp.watch('build/**/*').on('change', server.reload);
