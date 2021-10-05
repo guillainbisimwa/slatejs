@@ -1,33 +1,28 @@
 // node-slate
 
 // Imports
-import browserSync from  'browser-sync';
-import cleanCss from     'gulp-clean-css';
-import concat from       'gulp-concat';
-import del from          'del';
-import ejs from          'gulp-ejs';
-import gulp from         'gulp';
-import gulpIf from       'gulp-if';
-import highlight from    'highlight.js';
-import htmlHint from     'gulp-htmlhint';
-import jsHint from       'gulp-jshint';
-import log from          'fancy-log';
-import marked from       'marked';
-import mergeStream from  'merge-stream';
-import path from         'path';
-import prettify from     'gulp-prettify';
-import rename from       'gulp-rename';
+import browserSync  from 'browser-sync';
+import cleanCss     from 'gulp-clean-css';
+import concat       from 'gulp-concat';
+import ejs          from 'gulp-ejs';
+import gulp         from 'gulp';
+import gulpIf       from 'gulp-if';
+import highlight    from 'highlight.js';
+import jsHint       from 'gulp-jshint';
+import log          from 'fancy-log';
+import marked       from 'marked';
+import mergeStream  from 'merge-stream';
+import path         from 'path';
+import prettify     from 'gulp-prettify';
+import rename       from 'gulp-rename';
 import sassCompiler from 'sass';
-import sassPlugin from   'gulp-sass';
-import uglify from       'gulp-uglify';
-import yaml from         'js-yaml';
-import { htmlValidator } from 'gulp-w3c-html-validator';
+import sassPlugin   from 'gulp-sass';
+import uglify       from 'gulp-uglify';
+import yaml         from 'js-yaml';
 import { readFileSync, writeFileSync } from 'fs';
 
 // Setup
-const pkg = JSON.parse(readFileSync('./package.json'));
 const port = 4567;
-const htmlHintConfig = { 'attr-value-double-quotes': false };
 const sass = sassPlugin(sassCompiler);
 const jsHintConfig = {
    jquery:  true,
@@ -90,22 +85,10 @@ const getPageData = () => {
 
 // Tasks
 const task = {
-   clean: () => {
-      console.log(pkg.name, 'v' + pkg.version);
-      return del(['build/*', '**/.DS_Store']);
-      },
    runStaticAnalysis: () => {
-      const ignoreDuplicateIds = (type, message) => !/^Duplicate ID/.test(message);
-      return mergeStream(
-         gulp.src('build/index.html')
-            .pipe(htmlHint(htmlHintConfig))
-            .pipe(htmlHint.reporter())
-            .pipe(htmlValidator.analyzer({ verifyMessage: ignoreDuplicateIds }))
-            .pipe(htmlValidator.reporter()),
-         gulp.src(jsFiles.scripts)
-            .pipe(jsHint(jsHintConfig))
-            .pipe(jsHint.reporter()),
-         );
+      return gulp.src(jsFiles.scripts)
+         .pipe(jsHint(jsHintConfig))
+         .pipe(jsHint.reporter());
       },
    buildFonts: () => {
       return gulp.src('source/fonts/**/*')
@@ -186,7 +169,6 @@ const task = {
    };
 
 // Gulp
-gulp.task('clean',              task.clean);
 gulp.task('lint',               task.runStaticAnalysis);
 gulp.task('build-js',           task.buildJs);
 gulp.task('build-css',          task.buildCss);
