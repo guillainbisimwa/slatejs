@@ -10,7 +10,6 @@ import gulpIf       from 'gulp-if';
 import highlight    from 'highlight.js';
 import jsHint       from 'gulp-jshint';
 import log          from 'fancy-log';
-import marked       from 'marked';
 import mergeStream  from 'merge-stream';
 import path         from 'path';
 import prettify     from 'gulp-prettify';
@@ -19,6 +18,7 @@ import sassCompiler from 'sass';
 import sassPlugin   from 'gulp-sass';
 import uglify       from 'gulp-uglify';
 import yaml         from 'js-yaml';
+import { marked } from 'marked';
 import { readFileSync, writeFileSync } from 'fs';
 
 // Setup
